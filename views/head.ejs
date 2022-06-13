@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>
+      <% if(locals.title) { %>
+        <%= title %>
+      <% } else { %>
+        The Price is Nice Cleaning
+      <% } %>
+    </title>
+    <link rel="stylesheet" media="screen" href="/css/placss.css" />
+    <script src="/js/dependency_factory.js"></script>
+    <script src="/js/placss.js"></script>
   </head>
   <body>
+    <header>
+
+    </header>

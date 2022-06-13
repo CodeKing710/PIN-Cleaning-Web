@@ -3,7 +3,7 @@ const main = require("express").Router();
 
 //Routes
 main.get('/', (req, res) => {
-  res.status(200).render('404');
+  res.status(200).render('home');
 });
 
 module.exports = main;
