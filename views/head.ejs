@@ -11,8 +11,22 @@
     <link rel="stylesheet" media="screen" href="/css/placss.css" />
     <script src="/js/dependency_factory.js"></script>
     <script src="/js/placss.js"></script>
+    <script>installDeps();</script>
   </head>
   <body>
     <header>
-
+      <flex justify="space-between">
+        <div id="logo">
+          <img src="/assets/logo.png" alt="Price is Nice Cleaning Logo" />
+        </div>
+        <nav>
+          <flex justify="evenly" row nowrap>
+            <a href="/">Home</a>
+            <a href="/services">Services</a>
+            <a href="/cart">Cart</a>
+            <a href="/signup">Sign-up</a>
+            <a href="/login">Sign-in</a>
+          </flex>
+        </nav>
+      </flex>
     </header>

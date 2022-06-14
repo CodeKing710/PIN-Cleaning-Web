@@ -1,0 +1,13 @@
+<%- include('../head.ejs', {title: 'Services'}); %>
+<section>
+  <center>
+    <h1>Services</h1>
+    <flex column wrap>
+      <% services.forEach((service) => {
+            const _service = service.replace(" ","-"); %>
+        <a href="<%= `/services/${_service.toLowerCase()}` %>"><%= service %></a>
+      <% }); %>
+    </flex>
+  </center>
+</section>
+<%- include('../foot.ejs'); %>

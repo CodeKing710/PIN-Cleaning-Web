@@ -7,6 +7,8 @@
   const PORT = process.env.PORT ?? 3000;
   const routes = require('./routes');
   const utils = require('./utils');
+  global.cache = {};
+  // exports.cache = cache;
 
   app.set('view engine','ejs');
   app.use(express.json());
@@ -17,6 +19,10 @@
   for(const route in routes) {
     app.use(routes[route].path, routes[route].ctrl);
   }
+
+  app.get('//', (req,res) => {
+    res.redirect('/');
+  });
 
   app.get('*', (req, res) => {
     res.status(404).render('404');
