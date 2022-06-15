@@ -1,24 +1,41 @@
 //PATH: origin/services
-const service = require("express").Router();
-// const {Services} = require('../models');
-const services = [
-  "Window Washing",
-  "Moving",
-  "Office Cleaning",
-  "Bar Cleaning",
-  "Store Cleaning",
-  "Factory Cleaning",
-  "Apartment Lobby and Hall Cleaning"
-];
+const services = require("express").Router();
+const {Service} = require('../models');
+// const services = [
+//   "Window Washing",
+//   "Moving",
+//   "Office Cleaning",
+//   "Bar Cleaning",
+//   "Store Cleaning",
+//   "Factory Cleaning",
+//   "Apartment Lobby and Hall Cleaning"
+// ];
+const checkService = async () => {
+  if(!global.cache.services) {
+    const _services = await Service.find();
+    global.cache.services = _services;
+  }
+}
 
 //Routes
-service.get('/', async (req,res) => {
+services.get('/', async (req,res) => {
   //Check if services have been cached
-  if(!global.cache.services) {
-    // const services = await Services.find();
-    global.cache.services = services;
-  } 
-  res.render('services/index', {services: cache.services});
+  await checkService();
+  res.status(200).render('services/index', {services: global.cache.services});
 });
 
-module.exports = service;
+services.get('/:name', async (req,res) => {
+  await checkService();
+  const name = req.params.name;
+  let service;
+  for(const _service of global.cache.services) {
+    const matchName = _service.name.replace(" ","-");
+    if(matchName.toLowerCase() == name) {
+      service = _service;
+      break;
+    }
+  }
+  res.render("services/show", {service: service});
+});
+
+module.exports = services;

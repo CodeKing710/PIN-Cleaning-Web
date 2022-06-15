@@ -7,7 +7,7 @@ main.get('/', (req, res) => {
 });
 
 main.get('/about', (req, res) => {
-  res.write("<h1>About page</h1>");
+  res.status(200).render('about');
 });
 
 module.exports = main;
