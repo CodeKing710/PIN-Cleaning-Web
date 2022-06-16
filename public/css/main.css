@@ -5,13 +5,22 @@
 header {
   background: #ccc;
 }
-header nav a {
-  display: inline-block;
-  padding: 5px 10px;
-  margin: 0 5px;
+header nav {
+  float: right;
+  width: 50%;
 }
-header #logo {
-  width: 30%;
+header nav a {
+  padding: 5px 10px;
+  margin: 5px 8px;
+}
+header div {
+  width: 50%;
+  float: left;
+}
+header div img {
+  width: 60%;
+  margin: 0 1px;
+  border-radius: 10px;
 }
 
 wrapper {
@@ -42,4 +51,11 @@ a.nav-item:hover, a:visited.nav-item:hover {
 
 form input {
   margin: 5px 0;
+}
+
+#slideshow {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

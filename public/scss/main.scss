@@ -3,13 +3,20 @@ header {
   background: #ccc;
   nav {
     a {
-      display: inline-block;
       padding: 5px 10px;
-      margin: 0 5px;
+      margin: 5px 8px;
     }
+    float: right;
+    width: 50%;
   }
-  #logo {
-    width: 30%;
+  div {
+    img {
+      width: 60%;
+      margin: 0 1px;
+      border-radius: 10px;
+    }
+    width: 50%;
+    float: left;
   }
 }
 wrapper {
@@ -40,4 +47,9 @@ form {
   input {
     margin: 5px 0;
   }
+}
+#slideshow {
+  width: 100%;
+  position: absolute;
+  top: 0; left: 0;
 }
