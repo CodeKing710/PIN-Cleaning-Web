@@ -9,13 +9,15 @@
 * {
   -webkit-box-sizing: border-box !important;
           box-sizing: border-box !important;
-  font-size: 1em;
   font-family: 'Open Sans', sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0;
   padding: 0;
 }
+html {font-size: 16px;}
+@media (max-width: 700px) {html {font-size: 14px;}}
+@media (max-width: 400px) {html {font-size: 12px;}}
 
 body {
   z-index: 0;

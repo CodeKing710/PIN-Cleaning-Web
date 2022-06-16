@@ -3,7 +3,7 @@ const cart = require("express").Router();
 
 //Routes
 cart.get('/', (req,res) => {
-  res.write("<h1>USER CART</h1>")
+  res.render('cart');
 });
 
 module.exports = cart;
