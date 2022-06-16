@@ -1,5 +1,6 @@
 //PATH: origin/auth
 const auth = require("express").Router();
+const {User} = require('../models');
 
 //Routes
 auth.get('/', (req,res) => {
