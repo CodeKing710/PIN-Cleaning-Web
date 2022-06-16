@@ -1,6 +1,14 @@
+* {
+  transition: all 0.2s linear;
+}
+
+header {
+  background: #ccc;
+}
 header nav a {
   display: inline-block;
   padding: 5px 10px;
+  margin: 0 5px;
 }
 header #logo {
   width: 30%;
@@ -13,4 +21,25 @@ wrapper footer {
   height: 120px;
   background: #eee;
   padding: 2px;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #005f7a;
+}
+a:hover, a:visited:hover {
+  color: #10af7a;
+}
+a.nav-item, a:visited.nav-item {
+  border-radius: 10px;
+  background: #bbb;
+  border: 1px solid black;
+}
+a.nav-item:hover, a:visited.nav-item:hover {
+  background: #aaa;
+  color: #000;
+}
+
+form input {
+  margin: 5px 0;
 }

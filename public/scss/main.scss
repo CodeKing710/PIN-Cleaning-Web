@@ -1,8 +1,11 @@
+* {transition: all 0.2s linear;}
 header {
+  background: #ccc;
   nav {
     a {
       display: inline-block;
       padding: 5px 10px;
+      margin: 0 5px;
     }
   }
   #logo {
@@ -15,5 +18,26 @@ wrapper {
     height: 120px;
     background: #eee;
     padding: 2px;
+  }
+}
+a, a:visited {
+  text-decoration: none;
+  color: #005f7a;
+  &:hover {
+    color: #10af7a;
+  }
+  &.nav-item {
+    border-radius: 10px;
+    background: #bbb;
+    border: 1px solid black;
+  }
+  &.nav-item:hover {
+    background: #aaa;
+    color: #000;
+  }
+}
+form {
+  input {
+    margin: 5px 0;
   }
 }

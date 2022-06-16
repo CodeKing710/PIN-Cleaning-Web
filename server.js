@@ -15,6 +15,12 @@
   app.use(express.static("public"));
   app.use(express.urlencoded({extended: true}));
   app.use(utils.addVarsToTemplate());
+  app.use(require('express-session')({
+    secret: process.env.KEY,
+    saveUninitialized: true,
+    resave: false,
+    cookie: {maxAge: Infinity}
+  }));
 
   for(const route in routes) {
     app.use(routes[route].path, routes[route].ctrl);
