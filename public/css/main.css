@@ -17,7 +17,7 @@ header div {
   width: 50%;
   float: left;
 }
-header div img {
+header div img#logo {
   width: 25%;
   transform: scaleX(2);
   margin: 0 1px;
@@ -69,4 +69,11 @@ form input {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 0;
+}
+#slideshow img {
+  display: none;
+}
+#slideshow img:first-child {
+  display: block;
 }
