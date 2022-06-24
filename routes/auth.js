@@ -9,7 +9,7 @@ auth.get('/', (req,res) => {
 });
 
 auth.get('/signup', async (req,res) => {
-  if(!req.session.userid) {
+  if(!req.session.userid || req.session.userid == 'guest') {
     res.render('user/signup');
   } else {
     res.redirect('/');
@@ -17,7 +17,7 @@ auth.get('/signup', async (req,res) => {
 });
 
 auth.get('/login', async (req,res) => {
-  if(!req.session.userid) {
+  if(!req.session.userid || req.session.userid == 'guest') {
     res.render('user/login');
   } else {
     res.redirect('/');
@@ -27,7 +27,7 @@ auth.get('/login', async (req,res) => {
 auth.post('/', async (req,res) => {
   const login = req.body.login ?? false;
   const username = req.body.username.indexOf('@') > 0 ? req.body.email : req.body.username;
-  const password = req.body.password;
+  let password = req.body.password;
   const email = req.body?.email;
 
   if(login) {

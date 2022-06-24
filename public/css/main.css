@@ -65,15 +65,15 @@ form input {
 }
 
 #slideshow {
-  width: 100%;
+  width: 45%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
+  overflow-y: hidden;
 }
 #slideshow img {
+  width: 80%;
   display: none;
-}
-#slideshow img:first-child {
-  display: block;
+  opacity: 0;
 }
