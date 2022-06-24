@@ -1,2 +1,2 @@
 exports.addVarsToTemplate = require("./addVarsToTemplate");
-exports.sessions = require('./session');
+// exports.sessions = require('./session');

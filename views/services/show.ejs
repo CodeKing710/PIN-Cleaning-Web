@@ -3,6 +3,10 @@
   <center>
     <h1><%= service.name %></h1>
     <h3>$<%= service.price %>.00</h3>
+    <a href="javascript:cartAdd(<%= service.name %>);" class="add-btn">Add to Cart</a>
+    <a href="javascript:cartRemove(<%= service.name %>);" class="remove-btn">Remove From Cart</a>
+    <script src="/js/cart/add.js"></script>
+    <script src="/js/cart/remove.js"></script>
   </center>
 </section>
 <%- include('../foot'); %>
