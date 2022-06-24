@@ -77,3 +77,19 @@ form input {
   display: none;
   opacity: 0;
 }
+
+.add-btn {
+  text-decoration: none;
+}
+
+.remove-btn {
+  text-decoration: none;
+}
+
+#service-list a {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}

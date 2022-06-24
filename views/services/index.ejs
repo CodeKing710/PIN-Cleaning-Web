@@ -2,7 +2,7 @@
 <section>
   <center>
     <h1>Services</h1>
-    <flex column wrap>
+    <flex column wrap id="service-list">
       <% services.forEach((service) => {
           const _service = service.name.replace(" ","-"); %>
         <a href="<%= `/services/${_service.toLowerCase()}` %>"><%= service.name %></a>
