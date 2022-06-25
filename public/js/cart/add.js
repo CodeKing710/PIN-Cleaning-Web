@@ -1,4 +1,4 @@
 function cartAdd(item) {
   window.cart.push(item);
-  sessionStorage.setItem('cart',window.cart);
+  sessionStorage.setItem('cart',JSON.stringify(window.cart));
 }
