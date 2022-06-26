@@ -2,10 +2,18 @@
 <section>
   <center>
     <h1>Services</h1>
-    <flex column wrap id="service-list">
+    <flex justify="evenly" row wrap id="service-list">
       <% services.forEach((service) => {
-          const _service = service.name.replace(" ","-"); %>
-        <a href="<%= `/services/${_service.toLowerCase()}` %>"><%= service.name %></a>
+        const _service = service.name.replace(" ","-").toLowerCase(); %>
+        <div class="card">
+          <a href="<%= `/services/${_service}` %>">
+            <%= service.name %>
+          </a>
+          <a href="<%= `/services/${_service}` %>">
+            <img src="<%= `/assets/services/${_service}.jpg` %>" alt="<%= service.name %>" />
+          </a>
+          <p>One-time service: $<%= service.price %></p>
+        </div>
       <% }); %>
     </flex>
   </center>

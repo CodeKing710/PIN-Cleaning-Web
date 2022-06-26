@@ -93,3 +93,20 @@ form input {
   width: fit-content;
   margin: auto;
 }
+
+.card {
+  width: 30%;
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  background: #eee;
+  border-radius: 15px;
+  box-shadow: 3px 3px 5px #222;
+}
+.card img {
+  width: 89%;
+  border-radius: 10px;
+}
+.card a {
+  font-size: 1.2em;
+}
