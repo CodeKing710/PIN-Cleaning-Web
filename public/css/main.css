@@ -12,6 +12,7 @@ header nav {
 header nav a {
   padding: 5px 10px;
   margin: 5px 8px;
+  font-size: 1.5em;
 }
 header div {
   width: 50%;
@@ -76,6 +77,12 @@ form input {
   width: 80%;
   display: none;
   opacity: 0;
+}
+
+#desc {
+  width: 55%;
+  float: right;
+  font-size: 2em;
 }
 
 .add-btn {

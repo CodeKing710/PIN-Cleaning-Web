@@ -10,9 +10,9 @@
             <%= service.name %>
           </a>
           <a href="<%= `/services/${_service}` %>">
-            <img src="<%= `/assets/services/${_service}.jpg` %>" alt="<%= service.name %>" />
+            <img src="<%= service.img %>" alt="<%= service.name %>" />
           </a>
-          <p>One-time service: $<%= service.price %></p>
+          <p>One-time service: $<%= service.pricing[0] %></p>
         </div>
       <% }); %>
     </flex>
