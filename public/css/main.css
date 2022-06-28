@@ -110,3 +110,14 @@ form input {
 .card a {
   font-size: 1.2em;
 }
+
+#cart-view table, #cart-view td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#cart-view th, #cart-view tr, #cart-view td {
+  text-align: center;
+}
+#cart-view td {
+  padding: 5px;
+}

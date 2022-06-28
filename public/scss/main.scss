@@ -110,3 +110,11 @@ form {
     font-size: 1.2em;
   }
 }
+
+#cart-view {
+  table, td {border: 1px solid black; border-collapse: collapse;}
+  th, tr, td {text-align: center;}
+  td {
+    padding: 5px;
+  }
+}
