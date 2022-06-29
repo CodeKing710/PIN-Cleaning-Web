@@ -128,3 +128,29 @@ form input {
 #cart-view td {
   padding: 5px;
 }
+
+#DEAL {
+  display: inline-block;
+  background: #ccc;
+  border-radius: 15px;
+}
+
+#DEAL:hover {
+  background: #eee;
+}
+
+#left {
+  width: 50%;
+  float: left;
+}
+#left img {
+  width: 100%;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+#right {
+  font-size: 1.3em;
+  width: 50%;
+  float: right;
+}

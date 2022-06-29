@@ -12,7 +12,7 @@
           <a href="<%= `/services/${_service}` %>">
             <img src="<%= service.img %>" alt="<%= service.name %>" />
           </a>
-          <p>One-time service: $<%= service.pricing[0] %></p>
+          <p><%= service.prices[0].get('for') %> $<%= service.prices[0].get('amount') %></p>
         </div>
       <% }); %>
     </flex>

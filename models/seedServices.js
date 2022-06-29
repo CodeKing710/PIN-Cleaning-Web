@@ -43,34 +43,51 @@ Service.create(
 },{
   name: "Flex Clean",
   prices: [{
-    amount: 10,
-    for: 'one-side'
+    amount: 20,
+    for: 'Oven'
   },{
-    amount: 15,
-    for: 'two-side'
+    amount: 20,
+    for: 'Cabinet Interior'
   }, {
-    amount: 5,
-    for: 'one-side (DEAL thru 09/22/2022)'
+    amount: 30,
+    for: 'Fixtures'
   }, {
-    amount: 7.5,
-    for: 'two-side (DEAL thru 09/22/2022)'
+    amount: 20,
+    for: 'Refrigerator'
+  }, {
+    amount: 50,
+    for: 'Windows'
+  }, {
+    amount: 0.3,
+    for: 'Per Sq. Ft. of Carpet'
   }],
   img: '/assets/services/flexclean.jpg'
 },{
   name: "Commercial Cleaning",
+  dcm: 1.35,
   prices: [{
-    amount: 10,
-    for: 'one-side'
+    amount: 70,
+    for: '0-1,000 sqft.'
   },{
-    amount: 15,
-    for: 'two-side'
+    amount: 140,
+    for: '1,000-5,000 sqft.'
   }, {
-    amount: 5,
-    for: 'one-side (DEAL thru 09/22/2022)'
+    amount: 200,
+    for: '5,000-10,000sqft.'
   }, {
-    amount: 7.5,
-    for: 'two-side (DEAL thru 09/22/2022)'
+    amount: 300,
+    for: '10,000-20,000 sqft.'
   }],
   img: '/assets/services/commercial.jpg'
+},
+{
+  name: "Hoarding Removal",
+  prices: [{}],
+  img: '/assets/services/hoardremoval.jpg'
+},
+{
+  name: "Biohazard Cleanup",
+  prices: [{}],
+  img: '/assets/services/biohazard.jpg'
 }
 ).then(()=>{process.exit();});

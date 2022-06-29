@@ -42,6 +42,7 @@ wrapper {
   header {
     border-bottom: 2px solid black;
   }
+  main section {overflow: hidden;}
 }
 
 a, a:visited {
@@ -122,4 +123,27 @@ form {
   td {
     padding: 5px;
   }
+}
+
+#DEAL {
+  display: inline-block;
+  background: #ccc; border-radius: 15px;
+}
+#DEAL:hover {
+  background: #eee;
+}
+
+#left {
+  width: 50%;
+  float: left;
+  img {
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+  }
+}
+#right {
+  font-size: 1.3em;
+  width: 50%;
+  float: right;
 }
