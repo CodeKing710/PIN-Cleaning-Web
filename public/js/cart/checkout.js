@@ -1,20 +1,23 @@
 async function checkout() {
   //Grab required attributes
   const emailto = prompt('What is your email?', 'guest@guest.com');
+  const appointment = prompt('What day would you like this done (mm/dd/yyyy)?','Today');
   const payType = document.getElementById('paytype').checked ? 'Cash' : 'Card';
   const cart = window.cart ?? JSON.parse(sessionStorage.getItem('cart'));
+  const date = new Date();
+  const orderdate = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`;
   let emailbody = 
-  `Order from ${emailto}:\n\nPayment format: ${payType}\n\nItems:\n`;
+  `Date: ${orderdate}\nOrder from ${emailto}:\nWould like done by: ${appointment}\n\nPayment format: ${payType}\n\nOrder:\n`;
 
   //Build email structure from the cart
   let totalPrice = 0;
   let totalItems = 0;
   cart.forEach(item => {
-    totalPrice += item.price;
+    totalPrice += Number(item.price);
     ++totalItems;
     emailbody += ` - ${item.name}\n`;
   });
-  emailbody += `\nItems: ${totalItems}\nTotal: \$${totalPrice}`;
+  emailbody += `\nTotal Items: ${totalItems}\nTotal: \$${totalPrice}`;
 
   //Send email
   // window.location = `mailto:clarenceprice@thepriceisnicecleaning.com?subject=Order%20from%20${emailto}&body=${emailbody}`;
