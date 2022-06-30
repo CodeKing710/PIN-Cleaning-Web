@@ -2,14 +2,51 @@
   transition: all 0.2s linear;
 }
 
+#mnav {
+  position: absolute;
+  width: 35%;
+  height: 100%;
+  background: #bbb;
+  top: 0;
+  left: -35%;
+  font-size: 2em;
+  z-index: 1;
+  text-align: center;
+}
+#mnav .nav-item {
+  border: none;
+  border-radius: none;
+}
+
+#menubtn {
+  position: absolute;
+  background: #005f7a;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  margin-left: 10px;
+  padding: 2px;
+  z-index: 1;
+}
+#menubtn:hover .bar {
+  background: #bbb;
+}
+#menubtn .bar {
+  width: 70%;
+  height: 8px;
+  margin: auto;
+  background: #888;
+}
+
 header {
   background: #ccc;
 }
-header nav {
+header #nav {
   float: right;
   width: 50%;
 }
-header nav a {
+header #nav a {
   padding: 5px 10px;
   margin: 5px 8px;
   font-size: 1.5em;
@@ -42,6 +79,9 @@ wrapper footer {
 }
 wrapper header {
   border-bottom: 2px solid black;
+}
+wrapper main section {
+  overflow: hidden;
 }
 
 a, a:visited {
@@ -153,4 +193,19 @@ form input {
   font-size: 1.3em;
   width: 50%;
   float: right;
+}
+
+@media (max-width: 720px) {
+  #right {
+    font-size: 0.6em;
+  }
+
+  #DEAL {
+    font-size: 0.85em;
+  }
+
+  header div {
+    width: 100%;
+    float: none;
+  }
 }

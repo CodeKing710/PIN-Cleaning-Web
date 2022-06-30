@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="robots.txt" content="index, follow, archive" />
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="robots.txt" content="index, follow, archive" />
+    <meta name="keywords" content="cleaning, cleaning service, clean, wash, scrub, the price is nice cleaning, the price is nice, the price is nice cleaning llc, celaning, windows, moving, service, affordable, cheap, inexpensive, biohzard, cleanup, biohzard cleanup, crime scene clean, crime scene cleanup, hoarders, hoarding, hoard, hoard removal, hoarding removal, hoarder removal, commerical cleaning, commerical, shiny, oshkosh, wisconsin, fond du lac, outagamie, winnebago, appleton, neenah, menasha, flex clean, apartment cleaning, apartment clean, office clean, office cleaning, factory clean, factory cleaning, carpet cleaning, oven, cabinet, fridge, refrigerator, fixtures, light fixtures, maid service, maid, maids, house cleaning, residential clean" />
+    <meta name="description" content="Welcome to The Price is Nice Cleaning. We are a brand new company in the Fox Valley that started in May of 2022. Own and run by Clarence Price, based in Oshkosh Wisconsin, we service most surrounding counties, including Outagamie and Fond Du Lac counties. We offer daily, weekly, biweekly, and one time service options. We are excited and committed to service all your cleaning needs and necessities! Check out our available services!" />
     <link rel="icon" href="/assets/favicon.jpg" />
     <title>
       <% if(locals.title) { %>
@@ -22,6 +22,19 @@
     <script>installDeps();</script>
   </head>
   <body>
+    <flex column nowrap id="menubtn">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </flex>
+    <nav id="mnav">
+      <flex justify="evenly" column nowrap>
+        <a href="javascript:void(0);" class="nav-item" id="closemenubtn">X</a>
+        <a class="nav-item" href="/">Home</a>
+        <a class="nav-item" href="/services">Services</a>
+        <a class="nav-item" href="/cart">Cart</a>
+      </flex>
+    </nav>
     <wrapper>
       <header>
         <div>
@@ -29,12 +42,13 @@
             <img id="logo" src="/assets/logo.jpg" alt="Price is Nice Cleaning Logo (Est. 2022)" />
           </a>
         </div>
-        <nav>
+        <nav id="nav">
           <flex justify="evenly" row nowrap>
             <a class="nav-item" href="/">Home</a>
             <a class="nav-item" href="/services">Services</a>
             <a class="nav-item" href="/cart">Cart</a>
           </flex>
         </nav>
+        <script src="/js/nav.js"></script>
       </header>
       <main>
