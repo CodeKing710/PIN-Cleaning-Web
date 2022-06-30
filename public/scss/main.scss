@@ -97,12 +97,6 @@ a, a:visited {
   }
 }
 
-form {
-  input {
-    margin: 5px 0;
-  }
-}
-
 #slideshow {
   width: 45%;
   position: absolute;
@@ -172,8 +166,8 @@ form {
   width: 50%;
   float: left;
   img {
-    width: 100%;
-    margin: 10px;
+    width: 95%;
+    margin: 5px;
     border-radius: 10px;
   }
 }
@@ -184,14 +178,30 @@ form {
 }
 
 @media (max-width: 720px) {
-  #right {
-    font-size: 0.6em;
+  #right, #left {
+    font-size: 1.5em;
+    width: 100%;
+    float: none;
   }
   #DEAL {
     font-size: 0.85em;
   }
+  #slideshow, #desc {
+    float: none;
+    width: 100%;
+    position: relative;
+  }
   header div {
     width: 100%;
     float: none;
+  }
+  .card {
+    width: 100%;
+    img {
+      width: 80%;
+    }
+  }
+  #cart-view {
+    font-size: 1.4em;
   }
 }

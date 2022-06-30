@@ -6,9 +6,13 @@
       <img src="<%= service.img %>" alt="<%= service.name %>" />
     </div>
     <div id="right">
-      <% service.prices.forEach(price => { %>
+      <% service.prices.forEach((price, index) => { %>
         <label for="<%= price.get('for') %>"><%= price.get('for') %>: $<%= price.get('amount') %></label>
-        <input type="radio" name="item" value="<%= price.get('amount') %>" id="<%= price.get('for') %>" /><br>
+        <% if(index == 0) { %>
+          <input type="radio" name="item" value="<%= price.get('amount') %>" id="<%= price.get('for') %>" checked /><br>
+        <% } else { %>
+          <input type="radio" name="item" value="<%= price.get('amount') %>" id="<%= price.get('for') %>" /><br>
+        <% } %>
       <% }); %>
       <a href="javascript:cartAdd({name:'<%= service.name %>'});" class="add-btn">Add to Cart</a><br>
       <a href="javascript:cartRemove({name:'<%= service.name %>'});" class="remove-btn">Remove From Cart</a>
