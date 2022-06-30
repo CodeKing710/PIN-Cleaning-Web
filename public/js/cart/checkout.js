@@ -7,7 +7,7 @@ async function checkout() {
   const date = new Date();
   const orderdate = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`;
   let emailbody = 
-  `Date: ${orderdate}\nOrder from ${emailto}:\nWould like done by: ${appointment}\n\nPayment format: ${payType}\n\nOrder:\n`;
+  `Order Date: ${orderdate}\nOrder from ${emailto}:\nWould like done by: ${appointment}\n\nPayment format: ${payType}\n\nOrder:\n`;
 
   //Build email structure from the cart
   let totalPrice = 0;
