@@ -3,13 +3,14 @@ const {Service} = require('../models');
 Service.create(
 {
   name: "Window Washing",
-  prices: [{
+  desc: "",
+  prices: [/*{
     amount: 10,
     for: 'one-side'
   },{
     amount: 15,
     for: 'two-side'
-  }, {
+  }, */{
     amount: 5,
     for: 'one-side (DEAL thru 09/22/2022)'
   }, {
@@ -19,6 +20,7 @@ Service.create(
   img: '/assets/services/window-washing.jpg'
 },{
   name: "Moving",
+  desc: "",
   dcm: 1.5,
   prices: [{
     amount: 65,
@@ -42,6 +44,7 @@ Service.create(
   img: '/assets/services/moving.jpg'
 },{
   name: "Flex Clean",
+  desc: "A flexible option to let you choose individual things you want cleaned!",
   prices: [{
     amount: 20,
     for: 'Oven'
@@ -64,6 +67,7 @@ Service.create(
   img: '/assets/services/flexclean.jpg'
 },{
   name: "Commercial Cleaning",
+  desc: "",
   dcm: 1.35,
   prices: [{
     amount: 70,
@@ -82,12 +86,20 @@ Service.create(
 },
 {
   name: "Hoarding Removal",
-  prices: [{}],
+  desc: "",
+  prices: [{
+    amount: 0,
+    for: "Call to Schedule an Appointment!"
+  }],
   img: '/assets/services/hoardremoval.jpg'
 },
 {
   name: "Biohazard Cleanup",
-  prices: [{}],
+  desc: "",
+  prices: [{
+    amount: 0,
+    for: "Call to Schedule an Appointment!"
+  }],
   img: '/assets/services/biohazard.jpg'
 }
 ).then(()=>{process.exit();});
