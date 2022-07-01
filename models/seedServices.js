@@ -1,5 +1,12 @@
 const {Service} = require('../models');
 
+Service.find().then((list)=>{
+  if(list.length >= 1) {
+    console.log("Resetting service list...");
+    Service.deleteMany();
+  }
+});
+
 Service.create(
 {
   name: "Window Washing",
@@ -89,7 +96,7 @@ Service.create(
   desc: "",
   prices: [{
     amount: 0,
-    for: "Call to Schedule an Appointment!"
+    for: "Call for Pricing and Appointment!"
   }],
   img: '/assets/services/hoardremoval.jpg'
 },
@@ -98,7 +105,7 @@ Service.create(
   desc: "",
   prices: [{
     amount: 0,
-    for: "Call to Schedule an Appointment!"
+    for: "Call for Pricing and Appointment!"
   }],
   img: '/assets/services/biohazard.jpg'
 }
