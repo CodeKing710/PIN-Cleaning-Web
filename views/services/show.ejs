@@ -7,16 +7,32 @@
       <img src="<%= service.img %>" alt="<%= service.name %>" />
     </div>
     <div id="right">
-      <% service.prices.forEach((price, index) => { %>
-        <label for="<%= price.get('for') %>"><%= price.get('for') %>: $<%= price.get('amount') %></label>
-        <% if(index == 0) { %>
-          <input type="radio" name="item" value="<%= price.get('amount') %>" id="<%= price.get('for') %>" checked /><br>
-        <% } else { %>
-          <input type="radio" name="item" value="<%= price.get('amount') %>" id="<%= price.get('for') %>" /><br>
+      <flex justify="space-around">
+        <div>
+          <h1>Normal Clean</h1>
+          <% service.prices.forEach((price, index) => { %>
+            <label for="<%= price.get('for') %>"><%= price.get('for') %>: $<%= price.get('amount') %></label>
+            <% if(index == 0) { %>
+              <input type="radio" name="item" value="<%= price.get('amount') %>" id="<%= price.get('for') %>" checked /><br>
+            <% } else { %>
+              <input type="radio" name="item" value="<%= price.get('amount') %>" id="<%= price.get('for') %>" /><br>
+            <% } %>
+          <% }); %>
+        </div>
+        <% if (service.dcm) { %>
+          <div>
+            <h1>Deep Clean</h1>
+            <% service.prices.forEach((price, index) => { %>
+              <label for="<%= price.get('for') %>DCM"><%= price.get('for') %>: $<%= price.get('amount')*service.dcm %></label>
+              <input type="radio" name="item" value="<%= price.get('amount')*service.dcm %>" id="<%= price.get('for') %>DCM" /><br>
+            <% }); %>
+          </div>
         <% } %>
-      <% }); %>
-      <a href="javascript:cartAdd({name:'<%= service.name %>'});" class="add-btn">Add to Cart</a><br>
-      <a href="javascript:cartRemove({name:'<%= service.name %>'});" class="remove-btn">Remove From Cart</a>
+      </flex>
+      <div>
+        <a href="javascript:cartAdd({name:'<%= service.name %>'});" class="add-btn">Add to Cart</a><br>
+        <a href="javascript:cartRemove({name:'<%= service.name %>'});" class="remove-btn">Remove From Cart</a>
+      </div>
     </div>
     <script src="/js/cart/add.js"></script>
     <script src="/js/cart/remove.js"></script>
