@@ -5,6 +5,9 @@
     <p><%= service.desc %></p>
     <div id="left">
       <img src="<%= service.img %>" alt="<%= service.name %>" />
+      <% if(service.name == 'Biohazard Cleanup') { %>
+        <img src="/assets/biohazard-cert.png" alt="Biohazard Certificate" />
+      <% } %>
     </div>
     <div id="right">
       <flex justify="space-around">
