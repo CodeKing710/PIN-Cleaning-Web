@@ -17,9 +17,25 @@ async function checkout() {
     ++totalItems;
     emailbody += ` - ${item.name}\n`;
   });
-  emailbody += `\nTotal Items: ${totalItems}\nTotal: \$${totalPrice}`;
+  emailbody += `\nTotal Items: ${totalItems}\nTotal: \$${totalPrice}\n\n`;
+  emailbody = encodeURIComponent(emailbody);
 
   //Send email
+  const mail = await fetch('/cart', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: JSON.stringify({
+      from: 'pinc-order-mailer@thepriceisnicecleaning.com',
+      to: 'clarenceprice@thepriceisnicecleaning.com',
+      subject: 'Order from '+emailto,
+      html: emailbody
+    })
+  });
+  if(mail.status !== 200) {
+    alert('Failed to send order!');
+  }
   // window.location = `mailto:clarenceprice@thepriceisnicecleaning.com?subject=Order%20from%20${emailto}&body=${emailbody}`;
-  alert(emailbody);
+  // alert(emailbody);
 }
