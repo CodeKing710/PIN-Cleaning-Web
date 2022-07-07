@@ -17,17 +17,15 @@ cart.post('/', (req,res) => {
   });
 
   const mailOptions = req.body;
-  console.log(req.body);
 
-  sender.sendMail(mailOptions, (e, info) => {
+  sender.sendMail(mailOptions, function(e, info) {
     if(e) {
       console.log(e);
-      res.status(400);
     } else {
       console.log('Email sent: ' + info.response);
-      res.status(200);
     }
   });
+  res.status(200);
 });
 
 module.exports = cart;

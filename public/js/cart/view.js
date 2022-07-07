@@ -17,7 +17,7 @@
       ++key;
       total += Number(item.price);
     }
-    view += `<tr id="total"><td>Total</td><td></td></tr>`
+    view += `<tr id="total"><td>Total</td><td>\$${total}</td><td></td></tr>`;
 
     view += `</table><label for="paytype">Cash: &nbsp;</label><input type="checkbox" id="paytype" />&nbsp;<a href="javascript:checkout();">Checkout</a>`;
     document.getElementById('cart-view').innerHTML = view;

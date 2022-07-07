@@ -10,32 +10,32 @@ async function checkout() {
   `Order Date: ${orderdate}\nOrder from ${emailto}:\nWould like done by: ${appointment}\n\nPayment format: ${payType}\n\nOrder:\n`;
 
   //Build email structure from the cart
-  let totalPrice = 0;
+  let totalPrice = document.getElementById('total').children[1].textContent;
   let totalItems = 0;
   cart.forEach(item => {
-    totalPrice += Number(item.price);
     ++totalItems;
     emailbody += ` - ${item.name}\n`;
   });
-  emailbody += `\nTotal Items: ${totalItems}\nTotal: \$${totalPrice}\n\n`;
-  emailbody = encodeURIComponent(emailbody);
+  emailbody += `\nTotal Items: ${totalItems}\nTotal: ${totalPrice}\n\n`;
+  // alert(emailbody);
+  // emailbody = encodeURIComponent(emailbody);
 
   //Send email
   const mail = await fetch('/cart', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       from: 'pinc-order-mailer@thepriceisnicecleaning.com',
       to: 'clarenceprice@thepriceisnicecleaning.com',
       subject: 'Order from '+emailto,
-      html: emailbody
+      text: emailbody
     })
   });
   if(mail.status !== 200) {
     alert('Failed to send order!');
   }
   // window.location = `mailto:clarenceprice@thepriceisnicecleaning.com?subject=Order%20from%20${emailto}&body=${emailbody}`;
-  // alert(emailbody);
+  
 }
