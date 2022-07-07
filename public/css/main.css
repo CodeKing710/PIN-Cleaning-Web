@@ -191,6 +191,20 @@ a.nav-item:hover, a:visited.nav-item:hover {
   float: right;
 }
 
+.card-logo {
+  width: 100px;
+  height: 70px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#card-wrapper {
+  display: inline-block;
+  width: 100%;
+  margin: auto;
+}
+
 @media (max-width: 720px) {
   #right, #left {
     font-size: 1.5em;
