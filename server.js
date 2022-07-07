@@ -37,4 +37,7 @@ for(const route in ssl_routes) {
 }
 
 app.listen(PORT, console.log(`Listening on port ${PORT}...`));
-ssl.listen(S_PORT, console.log(`SSL Secure Server Listening on ${S_PORT}...`));
+require('https').createServer({
+  key: process.env.SSLKEY,
+  cert: process.env.SSLCERT
+}, ssl).listen(S_PORT, console.log(`SSL Secure Server Listening on ${S_PORT}...`));
