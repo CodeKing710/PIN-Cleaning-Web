@@ -11,8 +11,8 @@ cart.post('/', (req,res) => {
   const sender = mailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'pinc-order-mailer@thepriceisnicecleaning.com',
-      pass: '0rd3rUp!'
+      user: 'admin@thepriceisnicecleaning.com',
+      pass: 'z3axtM37!'
     }
   });
 

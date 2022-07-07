@@ -33,6 +33,11 @@
         <% } %>
       </flex>
       <div>
+        <label for="qty">Quantity: </label><select id="qty">
+          <% for(let i = 1; i <= 50; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select><br>
         <a href="javascript:cartAdd({name:'<%= service.name %>'});" class="add-btn">Add to Cart</a><br>
         <a href="javascript:cartRemove({name:'<%= service.name %>'});" class="remove-btn">Remove From Cart</a>
       </div>

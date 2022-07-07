@@ -3,14 +3,14 @@ const {Service} = require('../models');
 Service.find().then((list)=>{
   if(list.length >= 1) {
     console.log("Resetting service list...");
-    Service.deleteMany();
+    Service.deleteMany({});
   }
 });
 
 Service.create(
 {
   name: "Window Washing",
-  desc: "",
+  desc: "Price is per pane, discounts on orders of 10+ window panes",
   prices: [/*{
     amount: 10,
     for: 'one-side'
@@ -75,7 +75,6 @@ Service.create(
 },{
   name: "Commercial Cleaning",
   desc: "",
-  dcm: 1.35,
   prices: [{
     amount: 70,
     for: '0-1,000 sqft.'
@@ -90,8 +89,7 @@ Service.create(
     for: '10,000-20,000 sqft.'
   }],
   img: '/assets/services/commercial.jpg'
-},
-{
+},{
   name: "Hoarding Removal",
   desc: "",
   prices: [{
@@ -99,8 +97,7 @@ Service.create(
     for: "Call for Pricing and Appointment!"
   }],
   img: '/assets/services/hoardremoval.jpg'
-},
-{
+},{
   name: "Biohazard Cleanup",
   desc: "",
   prices: [{
