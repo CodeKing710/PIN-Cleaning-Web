@@ -154,11 +154,11 @@ a, a:visited {
   }
 }
 
-#DEAL {
+.DEAL {
   display: inline-block;
   background: #ccc; border-radius: 15px;
 }
-#DEAL:hover {
+.DEAL:hover {
   background: #eee;
 }
 
@@ -197,7 +197,6 @@ a, a:visited {
     float: none;
   }
   .DEAL {
-    display: inline-block;
     font-size: 0.85em;
   }
   #slideshow, #desc {
