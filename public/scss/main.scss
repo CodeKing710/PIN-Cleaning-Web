@@ -196,7 +196,8 @@ a, a:visited {
     width: 100%;
     float: none;
   }
-  #DEAL {
+  .DEAL {
+    display: inline-block;
     font-size: 0.85em;
   }
   #slideshow, #desc {
