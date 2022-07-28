@@ -189,6 +189,7 @@ a, a:visited {
   width: 100%;
   margin: auto;
 }
+.selected img {border: 3px solid darkblue;}
 
 @media (max-width: 720px) {
   #right, #left {

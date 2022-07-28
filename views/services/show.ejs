@@ -33,11 +33,16 @@
         <% } %>
       </flex>
       <div>
-        <label for="qty">Quantity: </label><select id="qty">
-          <% for(let i = 1; i <= 50; i++) { %>
-            <option value="<%= i %>"><%= i %></option>
+        <label for="qty">Quantity: </label>
+          <% if(service.qtyLimit > 50) { %>
+            <input type="number" value="0" step="5" min="0" max="<%= service.qtyLimit %>" id="qty" /><br>
+          <% } else { %>
+            <select id="qty">
+            <% for(let i = 1; i <= service.qtyLimit; i++) { %>
+              <option value="<%= i %>"><%= i %></option>
+            <% } %>
+          </select><br>
           <% } %>
-        </select><br>
         <a href="javascript:cartAdd({name:'<%= service.name %>'});" class="add-btn">Add to Cart</a><br>
         <a href="javascript:cartRemove({name:'<%= service.name %>'});" class="remove-btn">Remove From Cart</a>
       </div>

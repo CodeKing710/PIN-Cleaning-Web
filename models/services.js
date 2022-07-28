@@ -5,7 +5,8 @@ const serviceSchema = new Schema({
   prices: [{type: Map, of: SchemaTypes.Mixed}],
   img: {type: String},
   dcm: {type: Number},
-  desc: {type: String}
+  desc: {type: String},
+  qtyLimit: {type: Number}
 });
 
 module.exports = serviceSchema;

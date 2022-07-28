@@ -205,6 +205,10 @@ a.nav-item:hover, a:visited.nav-item:hover {
   margin: auto;
 }
 
+.selected img {
+  border: 3px solid darkblue;
+}
+
 @media (max-width: 720px) {
   #right, #left {
     font-size: 1.5em;

@@ -1,4 +1,5 @@
 const {Service} = require('../models');
+const qtyLimit = 50;
 
 Service.find().then((list)=>{
   if(list.length >= 1) {
@@ -14,6 +15,8 @@ function makenBreak() {
     {
       name: "Window Washing",
       desc: "Price is per pane, discounts on orders of 10+ window panes",
+      img: '/assets/services/window-washing.jpg',
+      qtyLimit: qtyLimit,
       prices: [/*{
         amount: 10,
         for: 'one-side'
@@ -26,12 +29,13 @@ function makenBreak() {
       }, {
         amount: 7.5,
         for: 'two-side (DEAL thru 09/22/2022)'
-      }],
-      img: '/assets/services/window-washing.jpg'
+      }]
     },{
       name: "Moving",
       desc: "",
       dcm: 1.5,
+      img: '/assets/services/moving.jpg',
+      qtyLimit: qtyLimit,
       prices: [{
         amount: 65,
         for: '1 bed 1 bath'
@@ -50,11 +54,12 @@ function makenBreak() {
       },{
         amount: 150,
         for: '4 bed 2 bath'
-      }],
-      img: '/assets/services/moving.jpg'
+      }]
     },{
       name: "Flex Clean",
       desc: "A flexible option to let you choose individual things you want cleaned!",
+      img: '/assets/services/flexclean.jpg',
+      qtyLimit: qtyLimit,
       prices: [{
         amount: 20,
         for: 'Oven'
@@ -76,11 +81,12 @@ function makenBreak() {
       }, {
         amount: 20,
         for: 'Dryer Vent & Hose Cleaning (per)'
-      }],
-      img: '/assets/services/flexclean.jpg'
+      }]
     },{
       name: "Commercial Cleaning",
       desc: "",
+      img: '/assets/services/commercial.jpg',
+      qtyLimit: 20000,
       prices: [{
         amount: 70,
         for: '0-1,000 sqft.'
@@ -93,28 +99,30 @@ function makenBreak() {
       }, {
         amount: 300,
         for: '10,000-20,000 sqft.'
-      }],
-      img: '/assets/services/commercial.jpg'
+      }]
     },{
       name: "Hoarding Removal",
       desc: "",
+      img: '/assets/services/hoardremoval.jpg',
+      qtyLimit: qtyLimit,
       prices: [{
         amount: 0,
         for: "Call for Pricing and Appointment!"
-      }],
-      img: '/assets/services/hoardremoval.jpg'
+      }]
     },{
       name: "Biohazard Cleanup",
       desc: "",
+      img: '/assets/services/biohazard.jpg',
+      qtyLimit: qtyLimit,
       prices: [{
         amount: 0,
         for: "Call for Pricing and Appointment!"
-      }],
-      img: '/assets/services/biohazard.jpg'
+      }]
     },{
       name: "HVAC",
       desc: "A whole slew of HVAC tools for your HVAC needs",
       img: "/assets/services/hvac.jpg",
+      qtyLimit: qtyLimit,
       prices: [
         {
           amount: 20,
@@ -125,6 +133,7 @@ function makenBreak() {
       name: "Power Washing",
       desc: "Powerful Power Washer gets any set of gutter grime, house dirt, or driveway rubber off in minutes!",
       img: "/assets/services/power-washing.jpg",
+      qtyLimit: 10000,
       prices: [
         {
           amount: 0.25,
