@@ -1,17 +1,22 @@
 const cards = document.getElementById('card-wrapper').children;
+let selectedCard;
 function selectCard(card) {
   switch(card) {
     case 'visa':
       selectVisa();
+      selectedCard = 'Visa';
       break;
     case 'mast':
       selectMaster();
+      selectedCard = 'MasterCard';
       break;
     case 'amex':
       selectAmex();
+      selectedCard = 'American Express';
       break;
     case 'disc':
       selectDiscover();
+      selectedCard = 'Discover';
       break;
   }
 }
