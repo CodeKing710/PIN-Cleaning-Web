@@ -2,3 +2,4 @@
 exports.main = {path: '/', ctrl: require("./main")};
 exports.service = {path: '/services', ctrl: require('./services')};
 exports.cart = {path: '/cart', ctrl: require('./cart')};
+exports.payments = {path: '/payment', ctrl: require('./transactions/main')};
