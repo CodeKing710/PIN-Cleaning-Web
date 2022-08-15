@@ -1,1 +1,10 @@
 <!-- Accepts a ton of options for how to display the modal -->
+<%- include('head', {title: 'Payment Info'}); %>
+<div id="modal">
+  <label for="email">Email: </label><input type="email" id="email" name="email" required /><br>
+  <label for="cardnum">Card Number: </label><input type="text" id="cardnum" name="cardnum" required /><br>
+  <label for="seccode">CVC: </label><input type="text" id="seccode" name="seccode" required /><br>
+  <button onclick="javascript:processPayment()">Finalize Order</button>
+</div>
+<script src="/js/cart/checkout.js"></script>
+<%- include('foot'); %>
