@@ -1,5 +1,5 @@
 const cards = document.getElementById('card-wrapper').children;
-let selectedCard;
+let selectedCard = 'Cash'; //Default
 function selectCard(card) {
   switch(card) {
     case 'visa':

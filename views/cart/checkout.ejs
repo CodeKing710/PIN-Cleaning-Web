@@ -1,0 +1,19 @@
+<%- include('../head', {title: "Checkout"}); %>
+<section>
+  <center>
+    <form method="POST" action="/payment">
+      <div id="cart-view"></div>
+      <p id="pay-type"></p>
+      <div id="card-form"></div>
+      <input type="submit" class="DEAL" style="font-size: 1em; padding: 5px; cursor: pointer;" value="Checkout" />
+    </form>
+  </center>
+  <script src="/js/cart/view.js"></script>
+  <script src="/js/cart/checkout.js"></script>
+  <script>
+    let paytype = new URLSearchParams(window.location.search).get('payType');
+    document.getElementById('pay-type').innerHTML = `Pay Type: ${paytype}`;
+    paytype == 'Cash' ? null : renderCardForm();
+  </script>
+</section>
+<%- include('../foot'); %>

@@ -10,11 +10,18 @@ onp.post('/', async (req, res) => {
       source: req.body.cardName,
       description: req.body.chargeReason
     });
-    res.send('/payment');
-  } catch (e) {console.log(e);res.json({success: false});}
+    res.redirect('/payment/finalized');
+  } catch (e) {console.log(e);res.redirect('/payment/failed');}
 });
 onp.get('/', (req, res) => {
-  res.render('modal');
+  res.render('cart/checkout');
+});
+
+onp.get('/finalized', (req, res) => {
+ res.render('cart/success');
+});
+onp.get('/failed', (req, res) => {
+ res.render('cart/fail');
 });
 
 module.exports = onp;

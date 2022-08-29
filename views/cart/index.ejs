@@ -1,4 +1,4 @@
-<%- include('head', {title: "Cart"}); %>
+<%- include('../head', {title: "Cart"}); %>
 <section>
   <center>
     <h1>Cart</h1>
@@ -10,10 +10,11 @@
       <a href="javascript:selectCard('disc');"><img class="card-logo" src="/assets/cards/discover.png" alt="Discover Card Logo" /></a>
     </flex><br>
     <div id="cart-view"></div>
+    <a href="javascript:checkout();" id="checkout-btn">Proceed to Checkout</a>
     <script src="/js/cart/view.js"></script>
     <script src="/js/cart/remove.js"></script>
     <script src="/js/cart/checkout.js"></script>
     <script src="/js/cart/cards.js"></script>
   </center>
 </section>
-<%- include('foot'); %>
+<%- include('../foot'); %>

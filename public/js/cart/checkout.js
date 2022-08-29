@@ -61,6 +61,12 @@ async function processPayment(data) {
   mailOrder(document.getElementById('email').value);
 }
 
+//FOR CART CHECKOUT.EJS
+function renderCardForm() {
+  let cardform = document.getElementById('card-form');
+}
+
+//FOR CART INDEX.EJS
 async function checkout() {
-  window.location = `/payment`;
+  window.location = `/payment?payType=${selectedCard}`;
 }

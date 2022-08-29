@@ -20,11 +20,11 @@
       total += Number(item.price*item.qty);
       itemTotal += Number(item.qty);
     }
-    view += `<tr id="total"><td>Total</td><td>\$${total}</td><td>${itemTotal}</td><td></td></tr>`;
-
-    view += `</table><label for="paytype">Cash: &nbsp;</label><input type="checkbox" id="paytype" />&nbsp;<a href="javascript:checkout();">Checkout</a>`;
+    view += `<tr id="total"><td>Total</td><td name="price">\$${total}</td><td>${itemTotal}</td><td></td></tr></table>`;
     document.getElementById('cart-view').innerHTML = view;
+    document.getElementById('checkout-btn').style.display = 'inline';
   } else {
     document.getElementById('cart-view').innerHTML = "<h1>Empty Cart!</h1>";
+    document.getElementById('checkout-btn').style.display = 'none';
   }
 })();
