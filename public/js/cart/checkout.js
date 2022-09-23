@@ -63,7 +63,13 @@ async function processPayment(data) {
 
 //FOR CART CHECKOUT.EJS
 function renderCardForm() {
-  let cardform = document.getElementById('card-form');
+  const cardform = document.getElementById('card-form');
+  let view = 
+  `<label for=""></label><input type="text" name="" id="" /><br>
+  <label for=""></label><input type="text" name="" id="" /><br>
+  <label for=""></label><input type="text" name="" id="" /><br>`;
+
+  cardform.innerHTML = view;
 }
 
 //FOR CART INDEX.EJS
