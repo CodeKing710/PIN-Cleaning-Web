@@ -1,19 +1,35 @@
-<%- include('../head', {title: "Checkout"}); %>
-<section>
-  <center>
-    <form method="POST" action="/payment">
-      <div id="cart-view"></div>
-      <p id="pay-type"></p>
-      <div id="card-form"></div>
-      <input type="submit" class="DEAL" style="font-size: 1em; padding: 5px; cursor: pointer;" value="Checkout" />
-    </form>
-  </center>
-  <script src="/js/cart/view.js"></script>
-  <script src="/js/cart/checkout.js"></script>
-  <script>
-    let paytype = new URLSearchParams(window.location.search).get('payType');
-    document.getElementById('pay-type').innerHTML = `Pay Type: ${paytype}`;
-    paytype == 'Cash' ? null : renderCardForm();
-  </script>
-</section>
-<%- include('../foot'); %>
+<%- include('../wrappers/head', {title: "Checkout"}); %>
+  <% if(userid === 'guest') { %>
+    <section>
+      <h1>Unavailable!</h1>
+      <h3>Can't make a cart as a guest!</h3>
+      <script>
+        (()=>{setTimeout(()=>{window.location = window.location.origin},3000);})();
+      </script>
+    </section>
+  <% } else { %>
+  <section>
+    <center>
+      <h3>We Accept: </h3>
+      <flex justify="evenly" id="card-wrapper">
+        <img class="card-logo" src="/assets/cards/visa.png" alt="Visa Logo" />
+        <img class="card-logo" src="/assets/cards/mastercard.png" alt="Mastercard Logo" />
+        <img class="card-logo" src="/assets/cards/amex.png" alt="American Express Logo" />
+        <img class="card-logo" src="/assets/cards/discover.png" alt="Discover Card Logo" />
+      </flex>
+      <form action="/pay" method="POST" id="payment-form">
+        $<input type="text" name="total" value="<%= total %>" class="readonly" readonly />
+        <input type="text" name="chargeDesc" value="<%= desc %>" class="readonly" readonly />
+        <div class="form-row">
+          <label for="card-element">Credit or Debit</label>
+          <div id="card-element"></div>
+          <div id="card-errors" role="alert"></div>
+        </div>
+        <input type="hidden" name="stripeToken" id="stripeToken" />
+        <input type="submit" value="Checkout" />
+      </form>
+      <script src="/js/payment/index.js"></script>
+    </center>
+  </section>
+  <% } %>
+<%- include('../wrappers/foot'); %>

@@ -84,19 +84,22 @@ wrapper main section {
   overflow: hidden;
 }
 
-a, a:visited {
+a, a:visited, input[type=submit] {
   text-decoration: none;
   color: #005f7a;
+  background: #ccc;
+  border-radius: 10px;
+  padding: 4px;
 }
-a:hover, a:visited:hover {
+a:hover, a:visited:hover, input[type=submit]:hover {
   color: #10af7a;
 }
-a.nav-item, a:visited.nav-item {
+a.nav-item, a:visited.nav-item, input[type=submit].nav-item {
   border-radius: 10px;
   background: #bbb;
   border: 1px solid black;
 }
-a.nav-item:hover, a:visited.nav-item:hover {
+a.nav-item:hover, a:visited.nav-item:hover, input[type=submit].nav-item:hover {
   background: #aaa;
   color: #000;
 }
@@ -121,11 +124,7 @@ a.nav-item:hover, a:visited.nav-item:hover {
   font-size: 2em;
 }
 
-.add-btn {
-  text-decoration: none;
-}
-
-.remove-btn {
+.add-btn, .remove-btn {
   text-decoration: none;
 }
 
@@ -154,21 +153,30 @@ a.nav-item:hover, a:visited.nav-item:hover {
   font-size: 1.2em;
 }
 
-#cart-view table, #cart-view td {
-  border: 1px solid black;
+#cart-view {
   border-collapse: collapse;
+  width: 99%;
+  margin: 5px;
+}
+#cart-view td, #cart-view th {
+  border: 1px solid black;
+  padding: 5px;
+}
+#cart-view td a, #cart-view th a {
+  color: #ef0000;
+}
+#cart-view td a:hover, #cart-view th a:hover {
+  color: #9c0000;
 }
 #cart-view th, #cart-view tr, #cart-view td {
   text-align: center;
-}
-#cart-view td {
-  padding: 5px;
 }
 
 .DEAL {
   display: inline-block;
   background: #ccc;
   border-radius: 15px;
+  padding: 5px;
 }
 
 .DEAL:hover {
@@ -207,6 +215,24 @@ a.nav-item:hover, a:visited.nav-item:hover {
 
 .selected img {
   border: 3px solid darkblue;
+}
+
+fieldset {
+  padding: 5px;
+  border-radius: 15px;
+  border: 3px solid black;
+}
+
+fieldset input {
+  margin: 5px;
+}
+
+.readonly {
+  border: none;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+  width: auto;
+  height: auto;
 }
 
 @media (max-width: 720px) {

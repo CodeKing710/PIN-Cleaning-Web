@@ -19,6 +19,7 @@
     <script src="/js/dependency_factory.js"></script>
     <script src="/js/placss.js"></script>
     <script src="/js/cart/index.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script>installDeps();</script>
   </head>
   <body>
@@ -33,7 +34,13 @@
         <a class="nav-item" href="/">Home</a>
         <a class="nav-item" href="/about">About</a>
         <a class="nav-item" href="/services">Services</a>
-        <a class="nav-item" href="/cart">Cart</a>
+        <% if(userid == 'guest') { %>
+          <a class="nav-item" href="/login">Login</a>
+          <a class="nav-item" href="/login/signup">Apply</a>
+        <% } else { %>
+          <a class="nav-item" href="/cart">Cart</a>
+          <a class="nav-item" href="/login/logout">Logout</a>
+        <% } %>
       </flex>
     </nav>
     <wrapper>
@@ -48,7 +55,13 @@
             <a class="nav-item" href="/">Home</a>
             <a class="nav-item" href="/about">About</a>
             <a class="nav-item" href="/services">Services</a>
-            <a class="nav-item" href="/cart">Cart</a>
+            <% if(userid == 'guest') { %>
+              <a class="nav-item" href="/login">Login</a>
+              <a class="nav-item" href="/login/signup">Apply</a>
+            <% } else { %>
+              <a class="nav-item" href="/cart">Cart</a>
+              <a class="nav-item" href="/login/logout">Logout</a>
+            <% } %>
           </flex>
         </nav>
         <script src="/js/nav.js"></script>

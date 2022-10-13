@@ -1,7 +1,7 @@
-<%- include('../head', {title: service.name}); %>
+<%- include('../wrappers/head', {title: service.name}); %>
 <section>
   <center>
-    <h1><%= service.name %></h1>
+    <h1 id="service-name"><%= service.name %></h1>
     <p><%= service.desc %></p>
     <div id="left">
       <img src="<%= service.img %>" alt="<%= service.name %>" />
@@ -34,23 +34,24 @@
       </flex>
       <div>
         <label for="qty">Quantity: </label>
-          <% if(service.qtyLimit > 50) { %>
-            <input type="number" value="0" step="5" min="0" max="<%= service.qtyLimit %>" id="qty" /><br>
-          <% } else { %>
-            <select id="qty">
-            <% for(let i = 1; i <= service.qtyLimit; i++) { %>
-              <option value="<%= i %>"><%= i %></option>
-            <% } %>
-          </select><br>
+        <% if(service.qtyLimit > 50) { %>
+          <input type="number" value="0" step="5" min="0" max="<%= service.qtyLimit %>" id="qty" /><br>
+        <% } else { %>
+          <select id="qty">
+          <% for(let i = 1; i <= service.qtyLimit; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
           <% } %>
-        <a href="javascript:cartAdd({name:'<%= service.name %>'});" class="add-btn">Add to Cart</a><br>
-        <a href="javascript:cartRemove({name:'<%= service.name %>'});" class="remove-btn">Remove From Cart</a>
+        </select><br>
+        <% } %>
+        <% if(userid !== 'guest') { %>
+          <a href="javascript:add();" class="add-btn">Add to Cart</a><br>
+          <a href="javascript:remove();" class="remove-btn">Remove From Cart</a>
+        <% } else { %>
+          <a href="/login">Login to Add to Cart!</a>
+        <% } %>
+        <script src="/js/cart/index.js"></script>
       </div>
     </div>
-    <script src="/js/cart/add.js"></script>
-    <script src="/js/cart/remove.js"></script>
-    <!-- Handle query strings for certain services (mainly for preselect purposes) -->
-    <script src="/js/queryStringParser.js"></script>
   </center>
 </section>
-<%- include('../foot'); %>
+<%- include('../wrappers/foot'); %>

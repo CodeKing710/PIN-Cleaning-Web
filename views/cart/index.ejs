@@ -1,20 +1,41 @@
-<%- include('../head', {title: "Cart"}); %>
-<section>
-  <center>
-    <h1>Cart</h1>
-    <h3>We Accept: </h3>
-    <flex justify="evenly" id="card-wrapper">
-      <a href="javascript:selectCard('visa');"><img class="card-logo" src="/assets/cards/visa.png" alt="Visa Logo" /></a>
-      <a href="javascript:selectCard('mast');"><img class="card-logo" src="/assets/cards/mastercard.png" alt="Mastercard Logo" /></a>
-      <a href="javascript:selectCard('amex');"><img class="card-logo" src="/assets/cards/amex.png" alt="American Express Logo" /></a>
-      <a href="javascript:selectCard('disc');"><img class="card-logo" src="/assets/cards/discover.png" alt="Discover Card Logo" /></a>
-    </flex><br>
-    <div id="cart-view"></div>
-    <a href="javascript:checkout();" id="checkout-btn">Proceed to Checkout</a>
-    <script src="/js/cart/view.js"></script>
-    <script src="/js/cart/remove.js"></script>
-    <script src="/js/cart/checkout.js"></script>
-    <script src="/js/cart/cards.js"></script>
-  </center>
-</section>
-<%- include('../foot'); %>
+<%- include('../wrappers/head', {title: `${userid}'s Cart`}); %>
+  <% if(userid === 'guest') { %>
+    <section>
+      <h1>Unavailable!</h1>
+      <h3>Can't make a cart as a guest!</h3>
+      <script>
+        (()=>{setTimeout(()=>{window.location = window.location.origin},3000);})();
+      </script>
+    </section>
+  <% } else { %>
+    <section>
+      <center>
+        <h1><%= userid %>'s Cart</h1>
+        <table id="cart-view">
+          <tr>
+            <th>Name</th>
+            <th>Desc</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th><a href="javascript:clear();">Empty</a></th>
+          </tr>
+          <% user.cart.forEach((item, index) => { %>
+            <tr id="item<%= index %>">
+              <td><%= item.get('name') %></td>
+              <td><%= item.get('item') %></td>
+              <td><%= item.get('qty') %></td>
+              <td><%= item.get('price') %></td>
+              <td>
+                <a href="javascript:remove({name: '<%= item.get('name') %>', item: '<%= item.get('item') %>', qty: <%= item.get('qty') %>, price: <%= item.get('price') %>},<%= index %>);" class="DEAL">
+                  <h3>Remove</h3>
+                </a>
+              </td>
+            </tr>
+          <% }); %>
+        </table>
+        <a href="/pay" class="DEAL"><h2>Proceed to Checkout</h2></a>
+        <script src="/js/cart/index.js"></script>
+      </center>
+    </section>
+  <% } %>
+<%- include('../wrappers/foot'); %>
