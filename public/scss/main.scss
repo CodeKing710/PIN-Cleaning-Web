@@ -84,11 +84,11 @@ wrapper {
 input[type="submit"] {
   background: #ccc;
   border-radius: 10px;
+  padding: 4px;
 }
 a, a:visited, input[type="submit"] {
   text-decoration: none;
   color: #005f7a;
-  padding: 4px;
   &:hover {
     color: #10af7a;
   }
