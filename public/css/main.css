@@ -52,6 +52,7 @@ header #nav a {
   font-size: 1.5em;
 }
 header div {
+  overflow: hidden;
   width: 50%;
   float: left;
 }
@@ -60,7 +61,6 @@ header div img#logo {
   transform: scaleX(2);
   margin: 0 1px;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 @media (min-width: 1200px) {
@@ -85,11 +85,14 @@ wrapper main section {
   overflow: hidden;
 }
 
+input[type=submit] {
+  background: #ccc;
+  border-radius: 10px;
+}
+
 a, a:visited, input[type=submit] {
   text-decoration: none;
   color: #005f7a;
-  background: #ccc;
-  border-radius: 10px;
   padding: 4px;
 }
 a:hover, a:visited:hover, input[type=submit]:hover {
