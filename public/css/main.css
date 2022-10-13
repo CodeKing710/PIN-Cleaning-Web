@@ -60,6 +60,7 @@ header div img#logo {
   transform: scaleX(2);
   margin: 0 1px;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 @media (min-width: 1200px) {
