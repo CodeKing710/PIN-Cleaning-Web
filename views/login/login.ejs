@@ -1,0 +1,21 @@
+<%- include('../wrappers/head', {title: 'Login'}); %>
+<% if(userid !== 'guest') { %>
+  <section>
+    <h1>Already Logged In!</h1>
+    <script>
+      (()=>{setTimeout(()=>{window.location = window.location.origin},5000);})();
+    </script>
+  </section>
+<% } else { %>
+  <section>
+    <form method="POST" action="/login">
+      <fieldset>
+        <legend>Login</legend>
+        <label for="username">Username</label><input type="text" name="username" id="username" placeholder="Username..." /><br>
+        <label for="password">Password</label><input type="password" name="password" id="password" placeholder="Password..." /><br>
+        <input type="submit" value="Login" />
+      </fieldset>
+    </form>
+  </section>
+<% } %>
+<%- include('../wrappers/foot'); %>

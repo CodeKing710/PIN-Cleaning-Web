@@ -1,6 +1,6 @@
 //PATH: origin/services
 const services = require("express").Router();
-const {Service} = require('../models');
+const {Service} = require('../../models');
 // const services = [
 //   "Window Washing",
 //   "Moving",

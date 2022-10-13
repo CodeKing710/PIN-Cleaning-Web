@@ -1,0 +1,8 @@
+<%- include('../wrappers/head', {title: 'Logout'}); %>
+<section>
+  <h1>Logged Out Successfully!</h1>
+  <script>
+    (()=>{setTimeout(()=>{window.location = window.location.origin},5000);})();
+  </script>
+</section>
+<%- include('../wrappers/foot'); %>

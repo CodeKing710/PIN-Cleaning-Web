@@ -80,9 +80,12 @@ wrapper {
   main section {overflow: hidden;}
 }
 
-a, a:visited {
+a, a:visited, input[type="submit"] {
   text-decoration: none;
   color: #005f7a;
+  background: #ccc;
+  border-radius: 10px;
+  padding: 4px;
   &:hover {
     color: #10af7a;
   }
@@ -115,11 +118,7 @@ a, a:visited {
   font-size: 2em;
 }
 
-.add-btn {
-  text-decoration: none;
-}
-
-.remove-btn {
+.add-btn, .remove-btn {
   text-decoration: none;
 }
 
@@ -147,16 +146,27 @@ a, a:visited {
 }
 
 #cart-view {
-  table, td {border: 1px solid black; border-collapse: collapse;}
-  th, tr, td {text-align: center;}
-  td {
+  border-collapse: collapse;
+  width: 99%;
+  margin: 5px;
+  td, th {
+    border: 1px solid black;
     padding: 5px;
+    a {
+      color: #ef0000;
+      &:hover {
+        color: #9c0000;
+      }
+    }
   }
+  th, tr, td {text-align: center;}
 }
 
 .DEAL {
   display: inline-block;
-  background: #ccc; border-radius: 15px;
+  background: #ccc;
+  border-radius: 15px;
+  padding: 5px;
 }
 .DEAL:hover {
   background: #eee;
@@ -190,6 +200,23 @@ a, a:visited {
   margin: auto;
 }
 .selected img {border: 3px solid darkblue;}
+
+fieldset {
+  padding: 5px;
+  border-radius: 15px;
+  border: 3px solid black;
+}
+fieldset input {
+  margin: 5px;
+}
+
+.readonly {
+  border: none;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+  width: auto;
+  height: auto;
+}
 
 @media (max-width: 720px) {
   #right, #left {

@@ -1,0 +1,1 @@
+exports.vars = require('./vars');
