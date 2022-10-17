@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const payment = require('express').Router();
 const {User} = require('../../models');
-const stripe = require('stripe')(process.env.TSAPI_KEY);
+const stripe = require('stripe')(process.env.SAPI_KEY);
 
 payment.get('/', async (req,res) => {
   try {
