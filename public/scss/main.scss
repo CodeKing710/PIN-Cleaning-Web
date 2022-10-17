@@ -44,17 +44,17 @@ header {
       font-size: 1.5em;
     }
     float: right;
-    width: 50%;
+    width: 70%;
   }
   div {
     img#logo {
-      width: 25%;
-      transform: scaleX(2);
+      width: 50%;
+      border: 1px solid black;
       margin: 0 1px;
       border-radius: 10px;
     }
     overflow: hidden;
-    width: 50%;
+    width: 30%;
     float: left;
   }
 }

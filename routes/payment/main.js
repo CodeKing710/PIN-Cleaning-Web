@@ -25,7 +25,7 @@ payment.get('/', async (req,res) => {
 
 payment.post('/', async (req,res) => {
   const token = req.body.stripeToken ?? "";
-  const total = req.body.total ?? 0;
+  let total = Number(req.body.total)*100 ?? 0;
   const desc = req.body.chargeDesc ?? "";
 
   try {

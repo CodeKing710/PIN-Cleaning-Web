@@ -44,7 +44,7 @@ header {
 }
 header #nav {
   float: right;
-  width: 50%;
+  width: 70%;
 }
 header #nav a {
   padding: 5px 10px;
@@ -53,12 +53,12 @@ header #nav a {
 }
 header div {
   overflow: hidden;
-  width: 50%;
+  width: 30%;
   float: left;
 }
 header div img#logo {
-  width: 25%;
-  transform: scaleX(2);
+  width: 50%;
+  border: 1px solid black;
   margin: 0 1px;
   border-radius: 10px;
 }
