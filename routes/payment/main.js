@@ -3,6 +3,13 @@ require('dotenv').config();
 const payment = require('express').Router();
 const {User} = require('../../models');
 const stripe = require('stripe')(process.env.SAPI_KEY);
+const mailer = require('nodemailer').createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'admin@thepriceisnicecleaning.com',
+    pass: 'z3axtM37!'
+  }
+});
 
 payment.get('/', async (req,res) => {
   try {
@@ -44,24 +51,33 @@ payment.post('/', async (req,res) => {
     }
 
     //Send Receipt
-    const mailer = require('nodemailer').createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'admin@thepriceisnicecleaning.com',
-        pass: 'z3axtM37!'
-      }
-    });
-
     const user = await User.findOne({username: req.session.userid});
 
-    const mailOptions = {
+    const customerMailOptions = {
       from: 'admin@thepriceisnicecleaning.com',
       to: user.email,
       subject: `Order for ${user.username}`,
       text: desc
     };
 
-    mailer.sendMail(mailOptions, (e, info) => {
+    mailer.sendMail(customerMailOptions, (e, info) => {
+      if(e){
+        console.log(e);
+      } else {
+        console.log("Email sent: "+info.response);
+      }
+    });
+
+    //Send Order to Clarence
+
+    const clarenceMailOptions = {
+      from: 'admin@thepriceisnicecleaning.com',
+      to: 'clarenceprice@thepriceisnicecleaning.com',
+      subject: `Order from ${user.username}`,
+      text: desc
+    };
+
+    mailer.sendMail(clarenceMailOptions, (e, info) => {
       if(e){
         console.log(e);
       } else {
