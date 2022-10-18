@@ -8,28 +8,41 @@
       </script>
     </section>
   <% } else { %>
-  <section>
-    <center>
-      <h3>We Accept: </h3>
-      <flex justify="evenly" id="card-wrapper">
-        <img class="card-logo" src="/assets/cards/visa.png" alt="Visa Logo" />
-        <img class="card-logo" src="/assets/cards/mastercard.png" alt="Mastercard Logo" />
-        <img class="card-logo" src="/assets/cards/amex.png" alt="American Express Logo" />
-        <img class="card-logo" src="/assets/cards/discover.png" alt="Discover Card Logo" />
-      </flex>
-      <form action="/pay" method="POST" id="payment-form">
-        $<input type="text" name="total" value="<%= total %>" class="readonly" readonly />
-        <input type="text" name="chargeDesc" value="<%= desc %>" class="readonly" readonly />
-        <div class="form-row">
-          <label for="card-element">Credit or Debit</label>
-          <div id="card-element"></div>
-          <div id="card-errors" role="alert"></div>
-        </div>
-        <input type="hidden" name="stripeToken" id="stripeToken" />
-        <input type="submit" value="Checkout" />
-      </form>
-      <script src="/js/payment/index.js"></script>
-    </center>
-  </section>
+    <section>
+      <center>
+        <h1>We Accept: </h1>
+        <flex justify="evenly" id="card-wrapper">
+          <img class="card-logo" src="/assets/cards/visa.png" alt="Visa Logo" />
+          <img class="card-logo" src="/assets/cards/mastercard.png" alt="Mastercard Logo" />
+          <img class="card-logo" src="/assets/cards/amex.png" alt="American Express Logo" />
+          <img class="card-logo" src="/assets/cards/discover.png" alt="Discover Card Logo" />
+        </flex>
+        <form action="/pay" method="POST" id="payment-form">
+          <div class="form-row">
+            <h2>Subtotal: $<%= total %></h2>
+            <h2>After Tax: $<input type="text" name="total" readonly autofocus value="<%= total * 1.05 %>" /></h2>
+          </div>
+          <br><hr><br>
+          <div class="form-row">
+            <h2>When and where would you like the service done?</h2>
+            <label for="when"><strong>When: </strong></label><input type="date" class="InputElement" name="datetime" id="when" /><br><br>
+            <label for="where"><strong>Where: </strong></label><input type="text" class="InputElement" name="place" id="where" placeholder="1234 Example St., Lorem, IP, 09876" />
+          </div>
+          <br><hr><br>
+          <div class="form-row">
+            <h2>Order Description:</h2>
+            <h4 name="chargeDesc"><%= desc %></h4>
+            <br>
+            <label for="card-element">Enter Card Number</label>
+            <div id="card-element"></div>
+            <div id="card-errors" role="alert"></div>
+          </div>
+          <input type="hidden" name="stripeToken" id="stripeToken" />
+          <button class="DEAL"><h2>Checkout</h2></button>
+          <br><hr>
+        </form>
+        <script src="/js/payment/index.js"></script>
+      </center>
+    </section>
   <% } %>
 <%- include('../wrappers/foot'); %>

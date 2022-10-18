@@ -52,6 +52,10 @@ header {
       border: 1px solid black;
       margin: 0 1px;
       border-radius: 10px;
+      &:hover, &:focus {
+        width: 51%;
+        border: 2px solid black;
+      }
     }
     overflow: hidden;
     width: 30%;
@@ -81,6 +85,22 @@ wrapper {
   main section {overflow: hidden;}
 }
 
+input[type="date"], input[type="text"], input[type="password"], input[type="email"] {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 2px;
+  font-weight: 200;
+  font-size: 1.1em;
+}
+input[type="date"]:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+  border: none;
+  border-style: none;
+  outline: none;
+  border-bottom: 3px solid black;
+  font-weight: 500;
+}
+
+
 input[type="submit"] {
   background: #ccc;
   border-radius: 10px;
@@ -89,7 +109,7 @@ input[type="submit"] {
 a, a:visited, input[type="submit"] {
   text-decoration: none;
   color: #005f7a;
-  &:hover {
+  &:hover, &:focus {
     color: #10af7a;
   }
   &.nav-item {
@@ -97,7 +117,7 @@ a, a:visited, input[type="submit"] {
     background: #bbb;
     border: 1px solid black;
   }
-  &.nav-item:hover {
+  &.nav-item:hover, &.nav-item:focus {
     background: #aaa;
     color: #000;
   }

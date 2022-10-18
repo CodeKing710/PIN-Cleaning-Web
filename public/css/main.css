@@ -62,6 +62,10 @@ header div img#logo {
   margin: 0 1px;
   border-radius: 10px;
 }
+header div img#logo:hover, header div img#logo:focus {
+  width: 51%;
+  border: 2px solid black;
+}
 
 @media (min-width: 1200px) {
   wrapper {
@@ -85,6 +89,22 @@ wrapper main section {
   overflow: hidden;
 }
 
+input[type=date], input[type=text], input[type=password], input[type=email] {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 2px;
+  font-weight: 200;
+  font-size: 1.1em;
+}
+
+input[type=date]:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+  border: none;
+  border-style: none;
+  outline: none;
+  border-bottom: 3px solid black;
+  font-weight: 500;
+}
+
 input[type=submit] {
   background: #ccc;
   border-radius: 10px;
@@ -95,7 +115,7 @@ a, a:visited, input[type=submit] {
   text-decoration: none;
   color: #005f7a;
 }
-a:hover, a:visited:hover, input[type=submit]:hover {
+a:hover, a:focus, a:visited:hover, a:visited:focus, input[type=submit]:hover, input[type=submit]:focus {
   color: #10af7a;
 }
 a.nav-item, a:visited.nav-item, input[type=submit].nav-item {
@@ -103,7 +123,7 @@ a.nav-item, a:visited.nav-item, input[type=submit].nav-item {
   background: #bbb;
   border: 1px solid black;
 }
-a.nav-item:hover, a:visited.nav-item:hover, input[type=submit].nav-item:hover {
+a.nav-item:hover, a.nav-item:focus, a:visited.nav-item:hover, a:visited.nav-item:focus, input[type=submit].nav-item:hover, input[type=submit].nav-item:focus {
   background: #aaa;
   color: #000;
 }

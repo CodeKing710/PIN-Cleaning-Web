@@ -4,7 +4,7 @@ let stripe = window.location.hostname == 'localhost' ? Stripe('pk_test_51LQc0TKq
 let elements = stripe.elements();
 let style = {
   base: {
-    fontSize: '1em',
+    fontSize: '1.1em',
     color: '#005f7a',
     border: '1px solid black'
   }
