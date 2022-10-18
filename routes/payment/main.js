@@ -21,9 +21,13 @@ payment.get('/', async (req,res) => {
       let priceSubtotal = 0;
       let chargeDesc = "";
       for(let i = 0; i < user.cart.length; i++) {
-        priceSubtotal += (user.cart[i].get('price') * user.cart[i].get('qty'));
+        if(user.cart[i].get('name') === 'Commercial Cleaning') {
+          priceSubtotal += Number(user.cart[i].get('price'));
+        } else {
+          priceSubtotal += (Number(user.cart[i].get('price')) * Number(user.cart[i].get('qty')));
+        }
         //Generate description
-        chargeDesc += `${user.cart[i].get('name')} - ${user.cart[i].get('item')}\n`;
+        chargeDesc += `${user.cart[i].get('name')} - ${user.cart[i].get('item')} - Amount: ${user.cart[i].get('qty')}\n`;
       }
   
       //Render
@@ -61,12 +65,13 @@ payment.post('/', async (req,res) => {
   
       //Send Receipt
       const user = await User.findOne({username: req.session.userid});
+      const custEmailDesc = `Your order for:<br><br>${desc.replace('\n','<br>')}<br><br>To be done on ${time} has been processed!<br><br><h1>The Price is Nice Cleaning LLC</h1>`;
   
       const customerMailOptions = {
         from: 'admin@thepriceisnicecleaning.com',
         to: user.email,
         subject: `Order for ${user.username} on ${time}`,
-        text: desc
+        html: custEmailDesc
       };
   
       mailer.sendMail(customerMailOptions, (e, info) => {
@@ -78,12 +83,13 @@ payment.post('/', async (req,res) => {
       });
   
       //Send Order to Clarence
+      const clarenceEmailDesc = `You have a new order from ${user.username}(${user.email})\n\n${desc}\n\nThis is to be scheduled for ${time}.\nAddress is ${place}.\n\nHave a nice day!`;
   
       const clarenceMailOptions = {
         from: 'admin@thepriceisnicecleaning.com',
         to: 'clarenceprice@thepriceisnicecleaning.com',
         subject: `Order from ${user.username} on ${time}`,
-        text: desc
+        text: clarenceEmailDesc
       };
   
       mailer.sendMail(clarenceMailOptions, (e, info) => {

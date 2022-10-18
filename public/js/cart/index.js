@@ -15,6 +15,8 @@ async function add() {
     // console.log(await data.json());
   } catch(e) {
     console.log("Unable to upload cart data: "+e);
+  } finally {
+    alert('Added to Cart!');
   }
 }
 
@@ -37,6 +39,8 @@ async function remove(item, row) {
       // console.log(await data.json());
     } catch(e) {
       console.log("Unable to upload cart data: "+e);
+    } finally {
+      alert('Cart Item Removed');
     }
   } else {
     //Remove specific item
@@ -49,6 +53,8 @@ async function remove(item, row) {
       // console.log(await data.json());
     } catch(e) {
       console.log("Unable to upload cart data: "+e);
+    } finally {
+      alert('Removed Item from Cart!');
     }
 
     //Update visually
@@ -65,6 +71,8 @@ async function clear() {
     // console.log(await data.json());
   } catch(e) {
     console.log("Unable to upload cart data: "+e);
+  } finally {
+    alert('Cart Emptied!');
   }
 
   for(let i = 0; i < document.getElementById('cart-view').childNodes[1].childNodes.length-1; i++) {
