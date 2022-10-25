@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const payment = require('express').Router();
 const {User} = require('../../models');
-const stripe = require('stripe')(process.env.TSAPI_KEY); //DONT FORGET TO CHANGE BACK!!
+const stripe = require('stripe')(process.env.SAPI_KEY); //DONT FORGET TO CHANGE BACK!!
 const mailer = require('nodemailer').createTransport({
   service: 'gmail',
   auth: {
