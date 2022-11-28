@@ -30,6 +30,7 @@
             <h2>When and where would you like the service done?</h2>
             <label for="when"><strong>When: </strong></label><input type="date" class="InputElement" name="datetime" id="when" /><br><br>
             <label for="where"><strong>Where: </strong></label><input type="text" class="InputElement" name="place" id="where" placeholder="1234 Example St., Lorem, IP, 09876" /><br><br>
+            <label for="phone"><strong>Phone: </strong></label><input type="tel" class="InputElement" name="phone" id="phone" placeholder="(800)555-555" /><br><br>
             <label for="recurring"><strong>Recurring: </strong></label><input type="checkbox" class="InputElement" name="recur" id="recurring" onclick="toggleFrequency()" />
             <div id="frequencyContainer">
               <label for="frequency"><strong>How Often to Recur (Starts from selected 'When' date): </strong></label>
@@ -46,7 +47,7 @@
           </div>
           <br><hr><br>
           <div class="form-row">
-            <label for="card-element">Enter Card Number</label>
+            <label for="card-element"><h2>Card Number</h2></label>
             <div id="card-element"></div>
             <div id="card-errors" role="alert"></div>
           </div>
