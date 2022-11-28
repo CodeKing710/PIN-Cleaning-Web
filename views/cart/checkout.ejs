@@ -19,27 +19,39 @@
         </flex>
         <form action="/pay" method="POST" id="payment-form">
           <div class="form-row">
-            <h2>Subtotal: $<%= total %></h2>
-            <h2>After Tax: $<input type="text" name="total" readonly autofocus value="<%= total * 1.05 %>" /></h2>
+            <h2>Order Description:</h2>
+            <textarea name="chargeDesc" rows="6" cols="50" style="font-size: 1.1em; font-weight: 500;" readonly><%= desc %></textarea>
+            <br><hr><br>
+            <h2>Subtotal: $<%= total.toFixed(2) %></h2>
+            <h2>After Tax: $<input type="text" name="total" readonly autofocus value="<%= (total * 1.05).toFixed(2) %>" /></h2>
           </div>
           <br><hr><br>
           <div class="form-row">
             <h2>When and where would you like the service done?</h2>
             <label for="when"><strong>When: </strong></label><input type="date" class="InputElement" name="datetime" id="when" /><br><br>
-            <label for="where"><strong>Where: </strong></label><input type="text" class="InputElement" name="place" id="where" placeholder="1234 Example St., Lorem, IP, 09876" />
+            <label for="where"><strong>Where: </strong></label><input type="text" class="InputElement" name="place" id="where" placeholder="1234 Example St., Lorem, IP, 09876" /><br><br>
+            <label for="recurring"><strong>Recurring: </strong></label><input type="checkbox" class="InputElement" name="recur" id="recurring" onclick="toggleFrequency()" />
+            <div id="frequencyContainer">
+              <label for="frequency"><strong>How Often to Recur (Starts from selected 'When' date): </strong></label>
+              <select id="frequency" name="frequency">
+                <option value="daily">Daily</option>
+                <option value="bidaily">Bi-Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="biweekly">Bi-Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="bimonthly">Bi-Monthly</option>
+              </select>
+              <p>Recurring orders will automatically place the order when the time comes. Payments will go through automatically once the order is successfully placed!</p>
+            </div>
           </div>
           <br><hr><br>
           <div class="form-row">
-            <h2>Order Description:</h2>
-            <textarea name="chargeDesc" rows="6" cols="50" style="font-size: 1.1em; font-weight: 500;"><%= desc %></textarea>
-            <br>
             <label for="card-element">Enter Card Number</label>
             <div id="card-element"></div>
             <div id="card-errors" role="alert"></div>
           </div>
           <input type="hidden" name="stripeToken" id="stripeToken" />
           <button class="DEAL"><h2>Checkout</h2></button>
-          <br><hr>
         </form>
         <script src="/js/payment/index.js"></script>
       </center>

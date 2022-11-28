@@ -32,3 +32,13 @@ form.addEventListener('submit', async function(evt) {
 
   form.submit();
 });
+
+function toggleFrequency() {
+  const frequency = document.getElementById('frequencyContainer');
+  const check = document.getElementById('recurring');
+  if(check.checked) {
+    frequency.style.opacity = 1;
+  } else {
+    frequency.style.opacity = 0;
+  }
+}

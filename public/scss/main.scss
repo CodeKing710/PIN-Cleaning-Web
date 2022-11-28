@@ -241,6 +241,8 @@ fieldset input {
   height: auto;
 }
 
+#frequencyContainer {opacity: 0;}
+
 @media (max-width: 720px) {
   #right, #left {
     font-size: 1.5em;
