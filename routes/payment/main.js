@@ -10,6 +10,7 @@ const mailer = require('nodemailer').createTransport({
     pass: 'z3axtM37!'
   }
 });
+const requestRecurringOrder = require('../../utils/rro');
 
 payment.get('/', async (req,res) => {
   if(req.session.userid === 'guest') {
@@ -47,7 +48,29 @@ payment.post('/', async (req,res) => {
     const desc = req.body.chargeDesc ?? "";
     const time = req.body.datetime ?? "";
     const place = req.body.place ?? "";
+    const phone = req.body.phone ?? "";
+    const recur = req.body.recur ?? false;
+
+    if(recur) {
+      //Send Recurring Order Storage Request for current user
+      try {
+        const user = await User.findOne({uername: req.session.userid});
+        await requestRecurringOrder({
+          name: `${user.fname} ${user.lname}`,
+          token: token,
+          total: total,
+          desc: desc,
+          time: time,
+          place: place,
+          phone: phone,
+          freq: req.body.frequency
+        });
+      } catch (e) {
+        console.log("Failed to Create Recurring Order for " + user.username + ": " +e);
+      }
+    }
   
+    //Attempt to Charge
     try {
       const charge = await stripe.charges.create({
         amount: total,
