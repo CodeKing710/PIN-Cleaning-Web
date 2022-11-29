@@ -10,7 +10,7 @@ const mailer = require('nodemailer').createTransport({
     pass: 'z3axtM37!'
   }
 });
-const requestRecurringOrder = require('../../utils').rro;
+const requestRecurringOrder = require('../../utils').ro;
 
 payment.get('/', async (req,res) => {
   if(req.session.userid === 'guest') {
@@ -55,7 +55,7 @@ payment.post('/', async (req,res) => {
       //Send Recurring Order Storage Request for current user
       try {
         const user = await User.findOne({uername: req.session.userid});
-        await requestRecurringOrder({
+        await ro.requestRecurringOrder({
           name: `${user.fname} ${user.lname}`,
           token: token,
           total: total,
