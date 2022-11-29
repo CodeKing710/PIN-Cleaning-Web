@@ -14,7 +14,7 @@
   const utils = require('./utils');
   global.cache = {
     session: null,
-    ROs: {}
+    ROs: null
   };
 
   //Set app middlewares
@@ -57,16 +57,17 @@
   const ro = utils.ro();
   global.cache.ROs = await ro.getROList();
   //Force add fake recurring order
-  await ro.requestRecurringOrder({
-    name: "Admin Admin",
-    token: "iamveryspecialyesiamyesiamohsospecialjustdontdoanythingstupid",
-    total: 100,
-    desc: 'randomness',
-    time: '2022-11-29',
-    place: 'home',
-    phone: '9999999999',
-    freq: '1 d'
-  });
+  // await ro.requestRecurringOrder({
+  //   username: "admin",
+  //   name: "Admin Admin",
+  //   token: "iamveryspecialyesiamyesiamohsospecialjustdontdoanythingstupid",
+  //   total: 100,
+  //   desc: 'randomness',
+  //   time: '2022-11-29',
+  //   place: 'home',
+  //   phone: '9999999999',
+  //   freq: '1 d'
+  // });
 
   setInterval(await ro.updateCountdownsOnFile, 5000);
 

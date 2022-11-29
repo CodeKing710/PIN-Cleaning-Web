@@ -6,36 +6,43 @@ module.exports = function() {
       const moment = require('moment');
     
       //This has a chance to be empty if its the first recurring order (recurring orders can be removed so this file could become empty very easily)
-      const fileobj = await (await fs.readFile('./ROs.json')).toJSON().data;
-      console.log(fileobj);
+      const fileobj = JSON.parse(await fs.readFile('./ROs.json','utf-8'));
       const [time, length] = order.freq.split(" ");
-      fileobj[order.username] = {
+   
+      fileobj.push({
         ...order,
-        nexttime: moment(order.time).add(time, length).toDate().getMilliseconds(),
-        timeUntil: this.nexttime - this.time,
+        nextTime: moment(this.time).add(time, length).toDate().getMilliseconds(),
+        timeUntil: moment(this.nextTime).subtract(moment(this.time)).toDate().getMilliseconds(),
         countdown: function() {
+          console.log("Minute Down")
           this.timeUntil -= minute;
         },
         start: function() {
+          console.log("Started "+this.username+" recurring order!")
           this.intervalID = setInterval(()=>{this.countdown()},minute)
         },
         stop: function() {
           clearInterval(this.countdown);
         }
-      };
+      });
 
       //Save current ROs globally
       global.cache.ROs = fileobj;
     
       //Write new contents
-      await fs.writeFile('./ROs.json', JSON.stringify(fileobj));
+      await fs.writeFile('./ROs.json', JSON.stringify(fileobj), 'utf-8');
     },
     getROList: async () => {
-      const file = await (await fs.readFile('./ROs.json')).toJSON();
-      return file.data;
+      try {
+        const file = JSON.parse(await fs.readFile('./ROs.json','utf-8'));
+        return file;
+      } catch (e) {
+        console.log("Empty RO file!");
+        return [];
+      }
     },
     updateCountdownsOnFile: async () => {
-      await fs.writeFile('./ROs.json', JSON.stringify(global.cache.ROs));
+      await fs.writeFile('./ROs.json', JSON.stringify(global.cache.ROs), 'utf-8');
     }
   }
 }

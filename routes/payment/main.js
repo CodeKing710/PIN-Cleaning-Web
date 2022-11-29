@@ -56,6 +56,7 @@ payment.post('/', async (req,res) => {
       try {
         const user = await User.findOne({uername: req.session.userid});
         await ro.requestRecurringOrder({
+          username: req.session.userid,
           name: `${user.fname} ${user.lname}`,
           token: token,
           total: total,
