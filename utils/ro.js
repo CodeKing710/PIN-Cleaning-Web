@@ -7,6 +7,7 @@ module.exports = function() {
     
       //This has a chance to be empty if its the first recurring order (recurring orders can be removed so this file could become empty very easily)
       const fileobj = await (await fs.readFile('./ROs.json')).toJSON().data;
+      console.log(fileobj);
       const [time, length] = order.freq.split(" ");
       fileobj[order.username] = {
         ...order,
@@ -15,7 +16,9 @@ module.exports = function() {
         countdown: function() {
           this.timeUntil -= minute;
         },
-        start: setInterval(()=>{this.countdown()}, minute),
+        start: function() {
+          this.intervalID = setInterval(()=>{this.countdown()},minute)
+        },
         stop: function() {
           clearInterval(this.countdown);
         }
