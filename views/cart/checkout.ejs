@@ -30,17 +30,17 @@
             <h2>When and where would you like the service done?</h2>
             <label for="when"><strong>When: </strong></label><input type="date" class="InputElement" name="datetime" id="when" /><br><br>
             <label for="where"><strong>Where: </strong></label><input type="text" class="InputElement" name="place" id="where" placeholder="1234 Example St., Lorem, IP, 09876" /><br><br>
-            <label for="phone"><strong>Phone: </strong></label><input type="tel" class="InputElement" name="phone" id="phone" placeholder="(800)555-555" /><br><br>
+            <label for="phone"><strong>Phone [(xxx)xxx-xxxx]: </strong></label><input type="tel" class="InputElement" name="phone" id="phone" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" placeholder="(800)555-555" /><br><br>
             <label for="recurring"><strong>Recurring: </strong></label><input type="checkbox" class="InputElement" name="recur" id="recurring" onclick="toggleFrequency()" />
             <div id="frequencyContainer">
               <label for="frequency"><strong>How Often to Recur (Starts from selected 'When' date): </strong></label>
               <select id="frequency" name="frequency">
-                <option value="daily">Daily</option>
-                <option value="bidaily">Bi-Daily</option>
-                <option value="weekly">Weekly</option>
-                <option value="biweekly">Bi-Weekly</option>
-                <option value="monthly">Monthly</option>
-                <option value="bimonthly">Bi-Monthly</option>
+                <option value="1 d">Daily</option>
+                <option value="2 d">Bi-Daily</option>
+                <option value="1 w">Weekly</option>
+                <option value="2 w">Bi-Weekly</option>
+                <option value="1 m">Monthly</option>
+                <option value="2 m">Bi-Monthly</option>
               </select>
               <p>Recurring orders will automatically place the order when the time comes. Payments will go through automatically once the order is successfully placed!</p>
             </div>

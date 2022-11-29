@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const payment = require('express').Router();
 const {User} = require('../../models');
-const stripe = require('stripe')(process.env.SAPI_KEY); //DONT FORGET TO CHANGE BACK!!
+const stripe = require('stripe')(process.env.NODE_ENV === 'development' ? process.env.TSAPI_KEY : process.env.SAPI_KEY);
 const mailer = require('nodemailer').createTransport({
   service: 'gmail',
   auth: {
@@ -10,7 +10,7 @@ const mailer = require('nodemailer').createTransport({
     pass: 'z3axtM37!'
   }
 });
-const requestRecurringOrder = require('../../utils/rro');
+const requestRecurringOrder = require('../../utils').rro;
 
 payment.get('/', async (req,res) => {
   if(req.session.userid === 'guest') {
@@ -66,11 +66,20 @@ payment.post('/', async (req,res) => {
           freq: req.body.frequency
         });
       } catch (e) {
-        console.log("Failed to Create Recurring Order for " + user.username + ": " +e);
+        console.log("Failed to Create Recurring Order: " +e);
       }
     }
   
-    //Attempt to Charge
+    //Set Stripe Variable based on host location (dev v prod)
+    // let stripe;
+    if(process.env.NODE_ENV === 'development') {
+      // stripe = require('stripe')(process.env.TSAPI_KEY);
+      console.log("[STRIPE]: USING TEST KEYS!");
+    } else {
+      // stripe = require('stripe')(process.env.SAPI_KEY);
+      console.log("[STRIPE]: USING LIVE KEYS!");
+    }
+
     try {
       const charge = await stripe.charges.create({
         amount: total,
