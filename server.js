@@ -12,7 +12,10 @@
   const PORT = process.env.PORT ?? 3000;
   const routes = require('./routes');
   const utils = require('./utils');
-  global.cache = {session: null};
+  global.cache = {
+    session: null,
+    ROs: {}
+  };
 
   //Set app middlewares
   app.set('view engine','ejs');
@@ -52,7 +55,21 @@
 
   //Start recurring order counters (from where they left off)
   const ro = utils.ro();
-  console.log(await ro.getROList());
+  global.cache.ROs = await ro.getROList();
+  //Force add fake recurring order
+  await ro.requestRecurringOrder({
+    name: "Admin Admin",
+    token: "iamveryspecialyesiamyesiamohsospecialjustdontdoanythingstupid",
+    total: 100,
+    desc: 'randomness',
+    time: '2022-11-29',
+    place: 'home',
+    phone: '9999999999',
+    freq: '1 d'
+  });
+
+  setInterval(await ro.updateCountdownsOnFile, 5000);
+
 
   //Start listening for requests
   app.listen(PORT, console.log(`Listening on port ${PORT}...`));
