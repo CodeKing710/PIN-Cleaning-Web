@@ -11,7 +11,7 @@ const mailer = require('nodemailer').createTransport({
     pass: 'z3axtM37!'
   }
 });
-const requestRecurringOrder = require('../../utils').ro;
+const ro = require('../../utils').ro;
 
 payment.get('/', async (req,res) => {
   if(req.session.userid === 'guest') {
