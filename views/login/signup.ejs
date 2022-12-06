@@ -11,9 +11,12 @@
     <form method="POST" action="/login/signup">
       <fieldset>
         <legend>Sign-Up</legend>
-        <label for="email">Email</label><input type="email" id="email" name="email" placeholder="john_doe@example.com" /> <br>
-        <label for="username">Username</label><input type="text" name="username" id="username" placeholder="Must include number(s)" /><br>
-        <label for="password">Password</label><input type="password" name="password" id="password" placeholder="8 character minimum" /><br>
+        <label for="email">Email</label><input type="email" id="email" name="email" placeholder="john_doe@example.com" required /><br>
+        <label for="fname">First Name</label><input type="text" name="fname" id="fname" required /><br>
+        <label for="=lname">Last Name</label><input type="text" name="lname" id="lname" required /><br>
+        <label for="bname">Business Name</label><input type="text" name="bname" id="bname" /><br>
+        <label for="username">Username</label><input type="text" name="username" id="username" placeholder="Must include number(s)" required /><br>
+        <label for="password">Password</label><input type="password" name="password" id="password" placeholder="8 character minimum" required /><br>
         <input type="submit" value="Sign-Up" />
       </fieldset>
     </form>

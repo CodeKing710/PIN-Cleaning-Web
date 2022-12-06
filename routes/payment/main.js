@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const payment = require('express').Router();
 const {User} = require('../../models');
-const stripe = require('stripe')(process.env.SAPI_KEY); //DONT FORGET TO CHANGE BACK!!
+const stripe = require('stripe')(process.env.NODE_ENV === 'development' ? process.env.TSAPI_KEY : process.env.SAPI_KEY);
+
 const mailer = require('nodemailer').createTransport({
   service: 'gmail',
   auth: {
@@ -10,6 +11,7 @@ const mailer = require('nodemailer').createTransport({
     pass: 'z3axtM37!'
   }
 });
+const requestRecurringOrder = require('../../utils').ro;
 
 payment.get('/', async (req,res) => {
   if(req.session.userid === 'guest') {
@@ -47,7 +49,39 @@ payment.post('/', async (req,res) => {
     const desc = req.body.chargeDesc ?? "";
     const time = req.body.datetime ?? "";
     const place = req.body.place ?? "";
+    const phone = req.body.phone ?? "";
+    const recur = req.body.recur ?? false;
+
+    if(recur) {
+      //Send Recurring Order Storage Request for current user
+      try {
+        const user = await User.findOne({uername: req.session.userid});
+        await ro.requestRecurringOrder({
+          username: req.session.userid,
+          name: `${user.fname} ${user.lname}`,
+          token: token,
+          total: total,
+          desc: desc,
+          time: time,
+          place: place,
+          phone: phone,
+          freq: req.body.frequency
+        });
+      } catch (e) {
+        console.log("Failed to Create Recurring Order: " +e);
+      }
+    }
   
+    //Set Stripe Variable based on host location (dev v prod)
+    // let stripe;
+    if(process.env.NODE_ENV === 'development') {
+      // stripe = require('stripe')(process.env.TSAPI_KEY);
+      console.log("[STRIPE]: USING TEST KEYS!");
+    } else {
+      // stripe = require('stripe')(process.env.SAPI_KEY);
+      console.log("[STRIPE]: USING LIVE KEYS!");
+    }
+
     try {
       const charge = await stripe.charges.create({
         amount: total,

@@ -8,12 +8,18 @@ signup.get('/signup', (req,res) => {
 });
 
 signup.post('/signup', async (req, res) => {
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const bname = req.body.bname ?? "";
   const username = req.body.username;
   const password = await bcrypt.hash(req.body.password, 12);
   const email = req.body.email;
 
   try {
     const creation = await User.create({
+      fname: fname,
+      lname: lname,
+      bname: bname,
       username: username,
       password: password,
       email: email

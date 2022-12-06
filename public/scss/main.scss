@@ -85,14 +85,14 @@ wrapper {
   main section {overflow: hidden;}
 }
 
-input[type="date"], input[type="text"], input[type="password"], input[type="email"] {
+input[type="date"], input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
   border: none;
   border-bottom: 1px solid black;
   padding: 2px;
   font-weight: 200;
   font-size: 1.1em;
 }
-input[type="date"]:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+input[type="date"]:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
   border: none;
   border-style: none;
   outline: none;
@@ -240,6 +240,8 @@ fieldset input {
   width: auto;
   height: auto;
 }
+
+#frequencyContainer {opacity: 0;}
 
 @media (max-width: 720px) {
   #right, #left {

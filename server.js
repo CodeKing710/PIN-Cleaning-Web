@@ -1,6 +1,8 @@
 (async () => {
+  //Initialize any extra environment vars
   require('dotenv').config();
 
+  //Initialize app globals and libraries
   const express = require('express');
   const ejs = require('ejs');
   const cp = require('cookie-parser');
@@ -10,8 +12,12 @@
   const PORT = process.env.PORT ?? 3000;
   const routes = require('./routes');
   const utils = require('./utils');
-  global.cache = {session: null};
+  global.cache = {
+    session: null,
+    ROs: null
+  };
 
+  //Set app middlewares
   app.set('view engine','ejs');
   app.use(sessions({
     secret: process.env.KEY,
@@ -25,6 +31,7 @@
   app.use(cp());
   app.use(utils.vars());
 
+  //Apply routes to app
   for(const route in routes) {
     if(typeof routes[route].ctrl !== 'function') {
       //For nested routing
@@ -36,13 +43,23 @@
     }
   }
 
+  //Weird domain forward fix
   app.get('//', (req,res) => {
     res.redirect('/');
   });
 
+  //404 Errors
   app.get('*', (req, res) => {
     res.status(404).render('404');
   });
 
+  //Start recurring order counters (from where they left off)
+  const ro = utils.ro();
+  global.cache.ROs = await ro.getROList();
+  global.cache.ROs.filter((RO, index) => {
+    ro.start(global.cache.ROs[index]);
+  });
+
+  //Start listening for requests
   app.listen(PORT, console.log(`Listening on port ${PORT}...`));
 })();

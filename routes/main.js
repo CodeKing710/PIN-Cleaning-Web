@@ -3,6 +3,11 @@ const main = require("express").Router();
 
 //Routes
 main.get('/', (req, res) => {
+  if(process.env.NODE_ENV === "development") {
+    console.log("[PINCsys]: DEV SERVER");
+  } else {
+    console.log("[PINCsys]: PROD SERVER");
+  }
   res.status(200).render('home');
 });
 
