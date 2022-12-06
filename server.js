@@ -56,21 +56,9 @@
   //Start recurring order counters (from where they left off)
   const ro = utils.ro();
   global.cache.ROs = await ro.getROList();
-  //Force add fake recurring order
-  // await ro.requestRecurringOrder({
-  //   username: "admin",
-  //   name: "Admin Admin",
-  //   token: "iamveryspecialyesiamyesiamohsospecialjustdontdoanythingstupid",
-  //   total: 100,
-  //   desc: 'randomness',
-  //   time: '2022-11-29',
-  //   place: 'home',
-  //   phone: '9999999999',
-  //   freq: '1 d'
-  // });
-
-  setInterval(await ro.updateCountdownsOnFile, 5000);
-
+  global.cache.ROs.filter((RO, index) => {
+    ro.start(global.cache.ROs[index]);
+  });
 
   //Start listening for requests
   app.listen(PORT, console.log(`Listening on port ${PORT}...`));
