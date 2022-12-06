@@ -14,9 +14,9 @@ let card = elements.create('card', {style: style});
 
 card.mount('#card-element');
 
-let form = document.getElementById('payment-form');
+let payform = document.getElementById('payment-form');
 
-form.addEventListener('submit', async function(evt) {
+payform.addEventListener('submit', async function(evt) {
   evt.preventDefault();
 
   try {
