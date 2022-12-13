@@ -44,6 +44,9 @@ create.delete('/delete/$user/$id', async(req,res) => {
 
 //CUSTOMER ROUTES
 const stripe = require('stripe')(process.env.NODE_ENV === 'development' ? process.env.TSAPI_KEY : process.env.SAPI_KEY);
+create.get('/:id/pay', async (req,res) => {
+  //
+});
 create.post('/pay', async (req,res) => {
   //
 });

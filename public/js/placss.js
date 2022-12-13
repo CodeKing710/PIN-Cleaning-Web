@@ -8,10 +8,10 @@ function placss() {
     gridContainers();
     fitContent();
     spacers();
-    fixNavs();
+    // fixNavs();
     window.addEventListener("resize",function() {
         fitContent();
-        fixNavs();
+        // fixNavs();
     });
     window.addEventListener("scroll",function() {
         stickyNav();
@@ -248,7 +248,7 @@ function fixNavs() {
     let headerHeight = document.querySelectorAll('header')[0].offsetHeight;
     if(nav !== null) {
         nav.style.top = `${headerHeight}px`;
-        document.querySelectorAll('main')[0].style.paddingTop = `${headerHeight}px`;
+        document.querySelector('main').style.paddingTop = `${headerHeight}px`;
     }
 }
 function stickyNav() {
