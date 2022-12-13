@@ -19,6 +19,7 @@
     <script src="/js/dependency_factory.js"></script>
     <script src="/js/placss.js"></script>
     <script src="/js/cart/index.js"></script>
+    <script src="/js/breadcrumbs.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <script>installDeps();</script>
   </head>
@@ -41,6 +42,9 @@
           <a class="nav-item" href="/invoicing">Bills</a>
           <a class="nav-item" href="/cart">Cart</a>
           <a class="nav-item" href="/login/logout">Logout</a>
+          <a class="nav-item cricle" href="/login/<%= userid %>">
+            <%= userid.substring(0,1).toUpperCase() %>
+          </a>
         <% } %>
       </flex>
     </nav>
@@ -63,6 +67,9 @@
               <a class="nav-item" href="/invoicing">Bills</a>
               <a class="nav-item" href="/cart">Cart</a>
               <a class="nav-item" href="/login/logout">Logout</a>
+              <a class="nav-item circle" href="/login/<%= userid %>">
+                <%= userid.substring(0,1).toUpperCase() %>
+              </a>
             <% } %>
           </flex>
         </nav>

@@ -100,6 +100,15 @@ input[type="date"]:focus, input[type="text"]:focus, input[type="password"]:focus
   font-weight: 500;
 }
 
+.breadcrumbs {font-weight: bolder; overflow: hidden;}
+.breadcrumbs a, .breadcrumbs a:visited {
+  display: inline;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  color: black;
+}
+.breadcrumbs a:hover {color: white; background: black;}
 
 input[type="submit"] {
   background: #ccc;
@@ -111,6 +120,7 @@ a, a:visited, input[type="submit"] {
   color: #005f7a;
   &:hover, &:focus {
     color: #10af7a;
+    cursor: pointer;
   }
   &.nav-item {
     border-radius: 10px;
@@ -120,6 +130,17 @@ a, a:visited, input[type="submit"] {
   &.nav-item:hover, &.nav-item:focus {
     background: #aaa;
     color: #000;
+  }
+  &.circle {
+    border-radius: 100%;
+    padding: 6px;
+    background: #008cb3;
+    color: #333;
+    font-weight: bolder;
+    &:hover {
+      background:#006682;
+      color: #ccc;
+    }
   }
 }
 

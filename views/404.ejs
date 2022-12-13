@@ -5,7 +5,15 @@
   </head>
   <body>
     <section>
-      ERROR!
+      <center>
+        <a href="/"><h1>&lt;&lt;&lt; BACK</h1></a>
+        <h1>Error 404</h1>
+        <% if(locals.msg) { %>
+          <h2><%= msg %></h2>
+        <% } else { %>
+          <h2>Something went wrong, ok? Don't worry about it chances are it was meant to happen.</h2>
+        <% } %>
+      </center>
     </section>
   </body>
 </html>

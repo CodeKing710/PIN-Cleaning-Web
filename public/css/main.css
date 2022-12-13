@@ -105,6 +105,24 @@ input[type=date]:focus, input[type=text]:focus, input[type=password]:focus, inpu
   font-weight: 500;
 }
 
+.breadcrumbs {
+  font-weight: bolder;
+  overflow: hidden;
+}
+
+.breadcrumbs a, .breadcrumbs a:visited {
+  display: inline;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  color: black;
+}
+
+.breadcrumbs a:hover {
+  color: white;
+  background: black;
+}
+
 input[type=submit] {
   background: #ccc;
   border-radius: 10px;
@@ -117,6 +135,7 @@ a, a:visited, input[type=submit] {
 }
 a:hover, a:focus, a:visited:hover, a:visited:focus, input[type=submit]:hover, input[type=submit]:focus {
   color: #10af7a;
+  cursor: pointer;
 }
 a.nav-item, a:visited.nav-item, input[type=submit].nav-item {
   border-radius: 10px;
@@ -126,6 +145,17 @@ a.nav-item, a:visited.nav-item, input[type=submit].nav-item {
 a.nav-item:hover, a.nav-item:focus, a:visited.nav-item:hover, a:visited.nav-item:focus, input[type=submit].nav-item:hover, input[type=submit].nav-item:focus {
   background: #aaa;
   color: #000;
+}
+a.circle, a:visited.circle, input[type=submit].circle {
+  border-radius: 100%;
+  padding: 6px;
+  background: #008cb3;
+  color: #333;
+  font-weight: bolder;
+}
+a.circle:hover, a:visited.circle:hover, input[type=submit].circle:hover {
+  background: #006682;
+  color: #ccc;
 }
 
 #slideshow {

@@ -7,6 +7,7 @@
   const ejs = require('ejs');
   const cp = require('cookie-parser');
   const sessions = require('express-session');
+  const mo = require('method-override');
   const cookieLife = 1000*60*60*4;
   const app = express();
   const PORT = process.env.PORT ?? 3000;
@@ -29,6 +30,7 @@
   app.use(express.static("public"));
   app.use(express.urlencoded({extended: true}));
   app.use(cp());
+  app.use(mo("__m"));
   app.use(utils.vars());
 
   //Apply routes to app

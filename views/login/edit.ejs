@@ -1,0 +1,21 @@
+<%- include('../wrappers/head', {title: `Edit ${userid}'s Profile`}); %>
+<section>
+  <center>
+    <form action="/login/<%= userid %>/edit?__m=PUT" method="POST">
+      <fieldset>
+        <legend>Editing <%= userid %>'s Profile</legend>
+        <label for="username">Username: </label><input type="text" value="<%= user.username %>" name="username" id="username" required /><br>
+        <label for="bname">Business: </label><input type="text" value="<%= user.bname %>" name="bname" id="bname" required /><br>
+        <label for="fname">First Name: </label><input type="text" value="<%= user.fname %>" name="fname" id="fname" required /><br>
+        <label for="lname">Last Name: </label><input type="text" value="<%= user.lname %>" name="lname" id="lname" required /><br>
+        <label for="email">Email: </label><input type="email" value="<%= user.email %>" name="email" id="email" required /><br>
+        <input type="submit" value="Update Info" />
+      </fieldset>
+    </form>
+    <br><hr><br>
+    <form action="/login/<%= userid %>/delete?__m=DELETE" method="POST">
+      <input type="submit" value="Delete Profile" />
+    </form>
+  </center>
+</section>
+<%- include('../wrappers/foot'); %>

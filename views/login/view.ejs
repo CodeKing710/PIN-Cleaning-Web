@@ -1,0 +1,13 @@
+<%- include('../wrappers/head', {title: `${userid}'s Profile`}); %>
+<section>
+  <center>
+    <h1><%= userid %>'s Profile</h1>
+    <p><strong>Name:</strong> <%= user.fname %> <%= user.lname %></p>
+    <p><strong>Business:</strong> <%= user.bname %></p>
+    <p><strong>Username:</strong> <%= userid %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><a href="/login/<%= userid %>/edit">Edit Profile</a></p>
+    <!-- <p><a href="/login/reset">Change Password</a></p> -->
+  </center>
+</section>
+<%- include('../wrappers/foot'); %>

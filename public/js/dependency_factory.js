@@ -75,19 +75,19 @@ function rmDeps(...dep_names) {
 function installDeps() {
     let loadList = [];
     //Loop through the dependencies and assign the different types
-    for(let i = 0; i < __DEPENDENCIES__.length; i++) {
-        if(__DEPENDENCIES__[i].onload) {
+    __DEPENDENCIES__.forEach((dep) => {
+        if(dep.onload) {
             //Assign to the list to be looped through later
-            loadList.push(__DEPENDENCIES__[i].func);
+            loadList.push(dep.func);
         } else {
             //Run right away since it doesn't rely on pageload
-            __DEPENDENCIES__[i].func.call(window);
+            dep.func();
         }
-    }
+    });
     //Set window.onload to the function loadList loop
     window.onload = function() {
-        for(let i = 0; i < loadList.length; i++) {
-            loadList[i].call(window);
-        }
+        loadList.forEach((func) => {
+            func();
+        })
     }
 }
