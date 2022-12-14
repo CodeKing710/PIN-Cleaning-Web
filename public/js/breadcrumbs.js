@@ -6,11 +6,11 @@ function breadcrumbs() {
     const bcContainer = document.createElement('div');
     bcContainer.className = 'breadcrumbs';
     const paths = url.split('/');
-    let bc = '/';
+    let bc = '';
     bcContainer.innerHTML = `<a href="${bc}">Home</a>`;
     paths.forEach(path => {
       path = path[0].toUpperCase()+path.slice(1,path.length);
-      bc += `${path}/`;
+      bc += `/${path.toLowerCase()}`;
       bcContainer.innerHTML += ` > <a href="${bc}">${path}</a>`;
     });
     container.insertBefore(bcContainer ,container.children[0]);

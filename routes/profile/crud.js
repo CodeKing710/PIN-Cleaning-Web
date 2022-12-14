@@ -1,6 +1,8 @@
 const view = require('express').Router();
 const {User} = require('../../models');
 
+view.get('/', (req,res) => {res.redirect(`/profile/${req.session.userid}`)});
+
 view.get('/:id', async (req,res) => {
   if(req.params.id == req.session.userid) {
     const userRO = global.cache.ROs.filter((RO) => {
@@ -11,7 +13,11 @@ view.get('/:id', async (req,res) => {
     
     try {
       const user = await User.findOne({username: req.session.userid});
-      res.render('login/view', {user: user, ROs: userRO});
+      if(user.access) {
+        res.render('profile/view', {user: user, ROs: userRO});
+      } else {
+        res.render('profile/view', {user: user, ROs: userRO});
+      }
     } catch (e) {console.log(e);}
   } else {
     res.render('404', {msg: "Why are you trying to access things that aren't yours?"});
@@ -22,7 +28,7 @@ view.get('/:id/edit', async (req,res) => {
   if(req.params.id == req.session.userid) {
     try {
       const user = await User.findOne({username: req.session.userid});
-      res.render('login/edit', {user: user});
+      res.render('profile/edit', {user: user});
     } catch (e) {console.log(e);}
   } else {
     res.render('404', {msg: "Why are you trying to access things that aren't yours?"});
@@ -51,10 +57,10 @@ view.delete('/:id/delete', async (req,res) => {
           return RO;
         }
       });
-      res.render('login/d-suc');
+      res.render('profile/d-suc');
     } catch (e) {
       console.log(e);
-      res.render('login/d-fail');
+      res.render('profile/d-fail');
     }
   } else {
     res.render('404', {msg: "Why are you trying to access things that aren't yours?"});

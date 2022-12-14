@@ -19,6 +19,7 @@ module.exports = function() {
   };
 
   return {
+    currentID: 0,
     intervalID: [],
     countdown: function(RO) {
       RO.timeUntil -= minute;
@@ -47,8 +48,10 @@ module.exports = function() {
       fileobj.push({
         ...order,
         nextTime: Number(time)*Number(length),
-        timeUntil: Number(time)*Number(length) //Must match for first order
+        timeUntil: Number(time)*Number(length), //Must match for first order
+        id: this.currentID
       });
+      ++this.currentID;
 
       //Save current ROs globally
       global.cache.ROs = fileobj;
@@ -59,6 +62,7 @@ module.exports = function() {
     getROList: async () => {
       try {
         const file = JSON.parse(await fs.readFile('./ROs.json','utf-8'));
+        this.currentID = file[file.length-1]+1;
         return file;
       } catch (e) {
         console.log("Empty RO file!");
@@ -68,8 +72,11 @@ module.exports = function() {
     updateCountdownsOnFile: async () => {
       await fs.writeFile('./ROs.json', JSON.stringify(global.cache.ROs), 'utf-8');
     },
-    placeOrder: async () => {
+    placeOrder: async (id) => {
       console.log("Order placement reached!");
+    },
+    removeRecurringOrder: async (id) => {
+
     }
   }
 }
