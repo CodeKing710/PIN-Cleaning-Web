@@ -5,7 +5,7 @@ view.get('/', (req,res) => {res.redirect(`/profile/${req.session.userid}`)});
 
 view.get('/:id', async (req,res) => {
   if(req.params.id == req.session.userid) {
-    const userRO = global.cache.ROs.filter((RO) => {
+    const userRO = await User.findOne({username: req.session.userid}).access ? global.cache.ROs : global.cache.ROs.filter((RO) => {
       if(RO.username == req.params.id) {
         return RO;
       }

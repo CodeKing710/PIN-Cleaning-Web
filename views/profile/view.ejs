@@ -2,19 +2,27 @@
 <% if(user.access) { %>
   <section>
     <center>
-      <div class="left">
-        <h1><%= userid %>'s Profile (Admin)</h1>
-        <p><strong>Name:</strong> <%= user.fname %> <%= user.lname %></p>
-        <p><strong>Business:</strong> <%= user.bname %></p>
-        <p><strong>Username:</strong> <%= userid %></p>
-        <p><strong>Email:</strong> <%= user.email %></p>
-        <p><a href="/profile/<%= userid %>/edit">Edit Profile</a></p>
-      </div>
-      <div class="right">
+      <aside class="left">
+        <div>
+          <h1><%= userid %>'s Profile (Admin)</h1>
+          <p><strong>Name:</strong> <%= user.fname %> <%= user.lname %></p>
+          <p><strong>Business:</strong> <%= user.bname %></p>
+          <p><strong>Username:</strong> <%= userid %></p>
+          <p><strong>Email:</strong> <%= user.email %></p>
+          <p><a href="/profile/<%= userid %>/edit">Edit Profile</a></p>
+        </div>
+        <div>
+          <h2>Recurring Orders</h2>
+          <% ROs.forEach((RO) => { %>
+            <p><strong><em><%= RO.name %></em></strong> - <strong><%= RO.desc %></strong> - $<%= RO.total %> - <a href="javascript:cancelRO(<%= RO.id %>);">Cancel</a></p>
+          <% }); %>
+        </div>
+      </aside>
+      <aside class="right">
         <input type="text" width="100%" id="search" placeholder="Search for user..." />
         <a href="javascript:searchUser();">Search</a>
         <div id="searchOutput"></div>
-      </div>
+      </aside>
       <script src="/js/profiles/searchUser.js"></script>
     </center>
   </section>
