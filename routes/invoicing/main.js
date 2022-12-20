@@ -15,6 +15,22 @@ inv.get('/', async (req,res) => {
 
 inv.get('/pay/$id', async (req,res) => {
   //Reuse cart checkout code (build total and desc vars to pass to template)
+  try {
+    const user = await User.findOne({username: req.session.userid});
+    //Calculate totals
+    let total = 0;
+    let desc = "";
+    for(let i = 0; i < user.bills.length; i++) {
+      total += Number(user.bills[i].get('amount'));
+      //Generate description
+      desc += `${user.bills[i].get('name')}\n`;
+    }
+
+    //Render
+    res.render('cart/checkout', {total: total, desc: desc, invoice: true});
+  } catch (e) {
+    console.log("Couldn't find user: "+e);
+  }
 });
 
 //ADMIN ROUTES

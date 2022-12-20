@@ -7,9 +7,9 @@ const userSchema = mongoose.Schema({
   username: {type: String, required: true},
   password: {type: String, required: true},
   email: {type: String, required: false},
-  cart: [{type: Map, required: false}],
+  cart: [{type: Map, required: false}], //name, item, qty, price
   access: {type: Boolean, default: false, required: true},
-  bills: [{type: Map, required: false}]
+  bills: [{type: Map, required: false}] //name, amount
 });
 
 module.exports = userSchema;
