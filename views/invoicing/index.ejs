@@ -1,0 +1,26 @@
+<%- include('../wrappers/head', {title: `${userid}'s Bills`}); %>
+<section>
+  <center>
+    <% if(user.access) { %>
+      <input type="text" width="100%" id="search" placeholder="Search for user..." />
+      <a href="javascript:searchUser();">Search</a>
+      <script src="/js/profiles/searchUser.js"></script>
+    <% } %>
+    <h1><%= userid %>'s Bills</h1>
+    <table id="cart-view">
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th></th>
+      </tr>
+      <% bills.forEach((bill, index) => { %>
+        <tr id="bill<%= bill.get('id') %>">
+          <td><%= bill.get('name') %></td>
+          <td>$<%= bill.get('amount') %></td>
+          <td><a href="/invoicing/pay/<%= bill.get('id') %>" class="DEAL" style="color: #007f00;">Pay</a></td>
+        </tr>
+      <% }); %>
+    </table>
+  </center>
+</section>
+<%- include('../wrappers/foot'); %>

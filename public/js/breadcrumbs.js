@@ -7,7 +7,7 @@ function breadcrumbs() {
     bcContainer.className = 'breadcrumbs';
     const paths = url.split('/');
     let bc = '';
-    bcContainer.innerHTML = `<a href="${bc}">Home</a>`;
+    bcContainer.innerHTML = `<a href="/">Home</a>`;
     paths.forEach(path => {
       path = path[0].toUpperCase()+path.slice(1,path.length);
       bc += `/${path.toLowerCase()}`;
