@@ -207,22 +207,22 @@ a.circle:hover, a:visited.circle:hover, input[type=submit].circle:hover {
   font-size: 1.2em;
 }
 
-#cart-view {
+.cart-view {
   border-collapse: collapse;
   width: 99%;
   margin: 5px;
 }
-#cart-view td, #cart-view th {
+.cart-view td, .cart-view th {
   border: 1px solid black;
   padding: 5px;
 }
-#cart-view td a, #cart-view th a {
+.cart-view td a, .cart-view th a {
   color: #ef0000;
 }
-#cart-view td a:hover, #cart-view th a:hover {
+.cart-view td a:hover, .cart-view th a:hover {
   color: #9c0000;
 }
-#cart-view th, #cart-view tr, #cart-view td {
+.cart-view th, .cart-view tr, .cart-view td {
   text-align: center;
 }
 

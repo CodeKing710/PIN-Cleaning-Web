@@ -30,7 +30,7 @@ inv.get('/:id', async (req,res) => {
   if(await checkID(req.session.userid)) {
     try {
       const user = await User.findOne({username: req.params.id});
-      res.render('invoicing/index', {bills: user.bills});
+      res.render('invoicing/index', {user: user, bills: user.bills});
     } catch (e) {console.log(e);}
   } else {
     res.render('invoicing/na');

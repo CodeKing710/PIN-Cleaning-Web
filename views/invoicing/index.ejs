@@ -4,10 +4,11 @@
     <% if(user.access) { %>
       <input type="text" width="100%" id="search" placeholder="Search for user..." />
       <a href="javascript:searchUser();">Search</a>
+      <div id="searchOutput"></div>
       <script src="/js/profiles/searchUser.js"></script>
     <% } %>
     <h1><%= userid %>'s Bills</h1>
-    <table id="cart-view">
+    <table class="cart-view">
       <tr>
         <th>Name</th>
         <th>Amount</th>
