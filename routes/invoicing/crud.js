@@ -24,8 +24,7 @@ create.post('/create', async (req,res) => {
   if(await checkID(req.session.userid)) {
     try {
       const cust = await User.findOne({username: req.body.name});
-      console.log(cust);
-      const id = cust.bills[cust.bills.length-1].get('id') + 1;
+      const id = cust.bills.length <= 0 ? 0 : cust.bills[cust.bills.length-1 !== undefined ? cust.bills.length-1 : 0].get('id') + 1 ?? 0;
       const amount = Number(req.body.amount);
       await Unpaid.updateOne({},{$push:{list: {...req.body}}});
       await User.updateOne({username: req.body.name}, {$push: {bills: {id: Number(id), for: req.body.for, amount:amount}}});

@@ -7,7 +7,7 @@
       <div id="searchOutput"></div>
       <script src="/js/profiles/searchUser.js"></script>
     <% } %>
-    <h1><%= userid %>'s Bills</h1>
+    <h1><%= cust.username %>'s Bills</h1>
     <table class="cart-view">
       <% if(bills.length <= 0) { %>
         <tr><th>You have no outstanding invoices!</th></tr>
@@ -20,7 +20,7 @@
       <% } %>
       <% bills.forEach((bill, index) => { %>
         <tr id="bill<%= bill.get('id') %>">
-          <td><%= bill.get('name') %></td>
+          <td><%= bill.get('for') %></td>
           <td>$<%= bill.get('amount') %></td>
           <% if(user.access) { %>
             <td><a href="/invoicing/<%= cust.username %>/edit" class="DEAL" style="color: #00007f;">Edit</a></td>
