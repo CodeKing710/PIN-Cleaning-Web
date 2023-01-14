@@ -1,3 +1,4 @@
+const {User} = require('../models');
 module.exports = async function checkID(userID) {
   try {
     const user = await User.findOne({username: userID});

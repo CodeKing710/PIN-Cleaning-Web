@@ -9,19 +9,33 @@
     <% } %>
     <h1><%= userid %>'s Bills</h1>
     <table class="cart-view">
-      <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th></th>
-      </tr>
+      <% if(bills.length <= 0) { %>
+        <tr><th>You have no outstanding invoices!</th></tr>
+      <% } else { %>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th></th>
+        </tr>
+      <% } %>
       <% bills.forEach((bill, index) => { %>
         <tr id="bill<%= bill.get('id') %>">
           <td><%= bill.get('name') %></td>
           <td>$<%= bill.get('amount') %></td>
-          <td><a href="/invoicing/pay/<%= bill.get('id') %>" class="DEAL" style="color: #007f00;">Pay</a></td>
+          <% if(user.access) { %>
+            <td><a href="/invoicing/<%= cust.username %>/edit" class="DEAL" style="color: #00007f;">Edit</a></td>
+            <td><a href="/invoicing/<%= cust.username %>/delete?__m=DELETE" class="DEAL" style="color: #7f0000;">Delete</a></td>
+          <% } else { %>
+            <td><a href="/invoicing/pay/<%= bill.get('id') %>" class="DEAL" style="color: #007f00;">Pay</a></td>
+          <% } %>
         </tr>
       <% }); %>
     </table>
+    <% if(user.access && user.username !== cust.username) { %> 
+      <a href="/invoicing/<%= cust.username %>/create" class="DEAL" style="color: #007f00;">Create</a>
+    <% } else if(user.access && user.username === cust.username) { %>
+      <a href="/invoicing/create">Create Invoice</a>
+    <% } %>
   </center>
 </section>
 <%- include('../wrappers/foot'); %>

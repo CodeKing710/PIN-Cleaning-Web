@@ -21,9 +21,27 @@ const checkAndRun = async (req,res,next) => {
 
 create.post('/create', async (req,res) => {
   //Add Invoice to customer
-  await checkAndRun(req,res, async (req,res) => {
-    await Unpaid.updateOne({},{$push:{list: {...req.body}}});
-  });
+  if(await checkID(req.session.userid)) {
+    try {
+      const cust = await User.findOne({username: req.body.name});
+      console.log(cust);
+      const id = cust.bills[cust.bills.length-1].get('id') + 1;
+      const amount = Number(req.body.amount);
+      await Unpaid.updateOne({},{$push:{list: {...req.body}}});
+      await User.updateOne({username: req.body.name}, {$push: {bills: {id: Number(id), for: req.body.for, amount:amount}}});
+      res.redirect('/invoicing/create/success');
+    } catch (e) {
+      console.log(e);
+      res.redirect('/invoicing/create/fail');
+    }
+  }
+});
+
+create.get('/create/success', (req,res) => {
+  res.render('invoicing/success');
+});
+create.get('/create/fail', (req,res) => {
+  res.render('invoicing/fail');
 });
 
 create.put('/edit/$user/$id', async (req,res) => {

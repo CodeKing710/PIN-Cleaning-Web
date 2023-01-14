@@ -1,2 +1,21 @@
-<%- include('../wrappers/head', {title: `${userid}'s Bills`}); %>
+<%- include('../wrappers/head', {title: `Create Invoice`}); %>
+<section>
+  <center>
+    <form action="/invoicing/create" method="POST">
+      <fieldset>
+        <legend>Create Invoice</legend>
+        <label for="name">Name: </label>
+        <% if(userid) { %>
+          <input type="text" id="name" name="name" value="<%= userid %>" />
+        <% } else { %>
+          <input type="text" id="name" name="name" placeholder="Username..." />
+        <% } %>
+        <br>
+        <label for="amount">Amount: $</label><input type="number" id="amount" name="amount" value="0" />
+        <label for="for">For: </label><input type="text" id="for" name="for" placeholder="Bill Description..." />
+        <input type="submit" value="Create Invoice" />
+      </fieldset>
+    </form>
+  </center>
+</section>
 <%- include('../wrappers/foot'); %>

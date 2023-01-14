@@ -1,0 +1,11 @@
+<%- include('../wrappers/head', {title: `Creation Failure`}); %>
+<section>
+  <center>
+    <h1>Creation of Invoice Failed!</h1>
+    <h3><a href="/invoicing/create">Redirecting...</a></h3>
+    <script>
+      setTimeout(() => {window.location = '/invoicing/create';}, 3000);
+    </script>
+  </center>
+</section>
+<%- include('../wrappers/foot'); %>
