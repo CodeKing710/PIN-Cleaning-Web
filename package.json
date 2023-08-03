@@ -8,7 +8,8 @@
     "start:win": "set NODE_ENV=production&& node server.js",
     "dev": "set NODE_ENV=development&& nodemon -e js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node models/seedServices.js"
+    "seed": "node models/seedServices.js",
+    "delete-app": "node delete-app.js || rm -rf server.key TIMELOG.txt yarn.lock pricing.txt ROs.json server.csr package-lock.json NOTES.txt && rm -rd node_modules"
   },
   "repository": {
     "type": "git",
